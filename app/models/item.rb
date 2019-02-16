@@ -7,4 +7,12 @@ class Item < ApplicationRecord
   has_many :discs, dependent: :destroy
   has_many :carts
   has_many :oder_items
+
+  validates :title, presence: true
+  validates :artist_id, presence: true
+  validates :image_id, presence: true
+  validates :genre_id, presence: true
+  validates :label, presence: true
+  validates :price, presence: true
+  validates :stock, presence: true
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_16_050535) do
+ActiveRecord::Schema.define(version: 2019_02_16_080357) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 2019_02_16_050535) do
     t.index ["artist_name"], name: "index_artists_on_artist_name"
   end
 
+  create_table "discs", force: :cascade do |t|
+    t.string "disc_name"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "genre", default: "", null: false
     t.datetime "created_at", null: false
@@ -56,6 +63,13 @@ ActiveRecord::Schema.define(version: 2019_02_16_050535) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_items_on_title"
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["label"], name: "index_labels_on_label"
   end
 
   create_table "shipments", force: :cascade do |t|
