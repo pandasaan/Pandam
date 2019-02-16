@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_16_050535) do
+ActiveRecord::Schema.define(version: 2019_02_16_080357) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,11 +18,6 @@ ActiveRecord::Schema.define(version: 2019_02_16_050535) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -35,6 +30,13 @@ ActiveRecord::Schema.define(version: 2019_02_16_050535) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_name"], name: "index_artists_on_artist_name"
+  end
+
+  create_table "discs", force: :cascade do |t|
+    t.string "disc_name"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "genres", force: :cascade do |t|
@@ -58,12 +60,19 @@ ActiveRecord::Schema.define(version: 2019_02_16_050535) do
     t.index ["title"], name: "index_items_on_title"
   end
 
+  create_table "labels", force: :cascade do |t|
+    t.string "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["label"], name: "index_labels_on_label"
+  end
+
   create_table "shipments", force: :cascade do |t|
-    t.string "shipment_name", default: "", null: false
-    t.string "shipment_name_kana", default: "", null: false
-    t.string "shipment_postal_code", default: "", null: false
-    t.string "shipment_address", default: "", null: false
-    t.integer "user_id", null: false
+    t.string "shipment_name"
+    t.string "shipment_name_kana"
+    t.string "shipment_postal_code"
+    t.string "shipment_address"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shipment_address"], name: "index_shipments_on_shipment_address"
@@ -77,11 +86,6 @@ ActiveRecord::Schema.define(version: 2019_02_16_050535) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
     t.string "name", default: "", null: false
     t.string "name_kana", default: "", null: false
     t.string "postal_code", default: "", null: false
