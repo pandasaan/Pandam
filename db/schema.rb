@@ -24,12 +24,20 @@ ActiveRecord::Schema.define(version: 2019_02_16_050535) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+
   create_table "artists", force: :cascade do |t|
     t.string "artist_name", default: "", null: false
     t.text "comment", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_name"], name: "index_artists_on_artist_name"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "genre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre"], name: "index_genres_on_genre"
   end
 
   create_table "shipments", force: :cascade do |t|
