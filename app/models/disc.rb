@@ -3,5 +3,5 @@ class Disc < ApplicationRecord
 
   has_many :tunes
 
-  validates :disc_name, presence: true
+  validates :disc_name, presence: true 
 end
