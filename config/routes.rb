@@ -36,6 +36,6 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     patch '/admin/items/:id/flg_update' => 'items#flg_update'
   end
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

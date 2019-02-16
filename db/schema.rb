@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_02_16_050535) do
 
+
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -38,6 +39,20 @@ ActiveRecord::Schema.define(version: 2019_02_16_050535) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["genre"], name: "index_genres_on_genre"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "title"
+    t.integer "artist_id"
+    t.string "image_id"
+    t.integer "genre_id"
+    t.integer "label_id"
+    t.integer "price"
+    t.integer "stock"
+    t.integer "item_is_deleted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_items_on_title"
   end
 
   create_table "shipments", force: :cascade do |t|
