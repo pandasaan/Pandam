@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shipment_name: MyString
+  shipment_name_kana: MyString
+  shipment_postal_code: MyString
+  shipment_address: MyString
+  user_id: 1
+
+two:
+  shipment_name: MyString
+  shipment_name_kana: MyString
+  shipment_postal_code: MyString
+  shipment_address: MyString
+  user_id: 1

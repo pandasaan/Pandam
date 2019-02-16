@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_112909) do
+ActiveRecord::Schema.define(version: 2019_02_16_030025) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,6 +29,19 @@ ActiveRecord::Schema.define(version: 2019_02_14_112909) do
     t.text "comment", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+  
+  create_table "shipments", force: :cascade do |t|
+    t.string "shipment_name"
+    t.string "shipment_name_kana"
+    t.string "shipment_postal_code"
+    t.string "shipment_address"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shipment_address"], name: "index_shipments_on_shipment_address"
+    t.index ["shipment_name"], name: "index_shipments_on_shipment_name"
+    t.index ["shipment_name_kana"], name: "index_shipments_on_shipment_name_kana"
   end
 
   create_table "users", force: :cascade do |t|
