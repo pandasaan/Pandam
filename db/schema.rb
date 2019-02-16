@@ -12,19 +12,22 @@
 
 ActiveRecord::Schema.define(version: 2019_02_16_050535) do
 
-
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
-
 
   create_table "artists", force: :cascade do |t|
     t.string "artist_name", default: "", null: false
@@ -35,32 +38,32 @@ ActiveRecord::Schema.define(version: 2019_02_16_050535) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "genre"
+    t.string "genre", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["genre"], name: "index_genres_on_genre"
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "title"
-    t.integer "artist_id"
+    t.string "title", default: "", null: false
+    t.integer "artist_id", null: false
     t.string "image_id"
-    t.integer "genre_id"
-    t.integer "label_id"
-    t.integer "price"
-    t.integer "stock"
-    t.integer "item_is_deleted"
+    t.integer "genre_id", null: false
+    t.integer "label_id", null: false
+    t.integer "price", null: false
+    t.integer "stock", null: false
+    t.integer "item_is_deleted", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_items_on_title"
   end
 
   create_table "shipments", force: :cascade do |t|
-    t.string "shipment_name"
-    t.string "shipment_name_kana"
-    t.string "shipment_postal_code"
-    t.string "shipment_address"
-    t.integer "user_id"
+    t.string "shipment_name", default: "", null: false
+    t.string "shipment_name_kana", default: "", null: false
+    t.string "shipment_postal_code", default: "", null: false
+    t.string "shipment_address", default: "", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shipment_address"], name: "index_shipments_on_shipment_address"
@@ -74,6 +77,11 @@ ActiveRecord::Schema.define(version: 2019_02_16_050535) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.string "name", default: "", null: false
     t.string "name_kana", default: "", null: false
     t.string "postal_code", default: "", null: false
