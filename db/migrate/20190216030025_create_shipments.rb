@@ -1,11 +1,11 @@
 class CreateShipments < ActiveRecord::Migration[5.2]
   def change
     create_table :shipments do |t|
-      t.string :shipment_name
-      t.string :shipment_name_kana
-      t.string :shipment_postal_code
-      t.string :shipment_address
-      t.integer :user_id
+      t.string :shipment_name , null: false, default: ""
+      t.string :shipment_name_kana , null: false, default: ""
+      t.string :shipment_postal_code , null: false, default: ""
+      t.string :shipment_address , null: false, default: ""
+      t.integer :user_id , null: false
 
       t.timestamps
     end
