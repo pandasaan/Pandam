@@ -18,6 +18,11 @@ ActiveRecord::Schema.define(version: 2019_02_16_080357) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -68,11 +73,11 @@ ActiveRecord::Schema.define(version: 2019_02_16_080357) do
   end
 
   create_table "shipments", force: :cascade do |t|
-    t.string "shipment_name"
-    t.string "shipment_name_kana"
-    t.string "shipment_postal_code"
-    t.string "shipment_address"
-    t.integer "user_id"
+    t.string "shipment_name", default: "", null: false
+    t.string "shipment_name_kana", default: "", null: false
+    t.string "shipment_postal_code", default: "", null: false
+    t.string "shipment_address", default: "", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shipment_address"], name: "index_shipments_on_shipment_address"
@@ -86,6 +91,11 @@ ActiveRecord::Schema.define(version: 2019_02_16_080357) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.string "name", default: "", null: false
     t.string "name_kana", default: "", null: false
     t.string "postal_code", default: "", null: false
