@@ -1,2 +1,27 @@
-<h1>Items#top</h1>
-<p>Find me in app/views/items/top.html.erb</p>
+<div class="top">
+<div class="container">
+<div class="row">
+  <div class="col-xs-1">
+  </div>
+
+  <div class="col-xs-10">
+	<h2 class="clearfix">top test</h2>
+	    <div class="cart_item" >
+			<% @items.each do |item| %>
+                <%= link_to carts_path(item_id: item.id), data: { confirm: 'よろしいですか？' }, method: :post do %>
+                    <%= attachment_image_tag :image_id, :fill, 200, 200, format: 'jpeg' %>
+                <% end %>
+            <% end %>
+        </div>
+
+
+
+
+
+
+	 </div>
+  </div>
+  <div class="col-xs-1">
+  </div>
+</div>
+</div>
