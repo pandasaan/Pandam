@@ -1,4 +1,4 @@
-class Artist < ApplicationRecord
+railsclass Artist < ApplicationRecord
   has_many :items
 
   validate :artist_name, presence: true
