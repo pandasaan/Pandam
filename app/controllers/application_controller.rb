@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :text, :name_kana,:postal_code,:address,:tell])
+  end
 end
