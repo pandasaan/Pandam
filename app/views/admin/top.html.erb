@@ -1,2 +1,9 @@
-<h1>Admin#top</h1>
-<p>Find me in app/views/admin/top.html.erb</p>
+<div class="container">
+  <h2>管理者ページ</h2>
+  <div class="list-group">
+    <%= link_to "商品一覧", admin_items_path,class: "list-group-item" %>
+    <%= link_to "アーティスト一覧",artists_path, class: "list-group-item" %>
+    <%= link_to "ユーザー一覧", admin_users_path, class: "list-group-item" %>
+    <%= link_to "購入履歴一覧", admin_orders_path, class: "list-group-item" %>
+  </div>
+</div>
