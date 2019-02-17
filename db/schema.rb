@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2019_02_17_033246) do
-
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,6 +18,11 @@ ActiveRecord::Schema.define(version: 2019_02_17_033246) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -77,7 +80,6 @@ ActiveRecord::Schema.define(version: 2019_02_17_033246) do
     t.index ["label"], name: "index_labels_on_label"
   end
 
-
   create_table "order_items", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "amount", null: false
@@ -87,7 +89,6 @@ ActiveRecord::Schema.define(version: 2019_02_17_033246) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 
   create_table "orders", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -128,10 +129,25 @@ ActiveRecord::Schema.define(version: 2019_02_17_033246) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "name", default: "", null: false
+    t.string "name_kana", default: "", null: false
+    t.string "postal_code", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "tell", default: "", null: false
+    t.integer "user_is_deleted", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["address"], name: "index_users_on_address"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name"
+    t.index ["name_kana"], name: "index_users_on_name_kana"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["tell"], name: "index_users_on_tell"
   end
 
 end
