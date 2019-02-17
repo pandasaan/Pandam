@@ -1,5 +1,5 @@
-railsclass Artist < ApplicationRecord
+class Artist < ApplicationRecord
   has_many :items
 
-  validate :artist_name, presence: true
+  validates :artist_name, presence: true
 end

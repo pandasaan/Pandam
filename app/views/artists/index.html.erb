@@ -1,2 +1,39 @@
-<h1>Artists#index</h1>
-<p>Find me in app/views/artists/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <%= link_to "TOPへ戻る", admin_top_path %>
+      <h2>アーティスト一覧</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>アーティスト名</th>
+            <th>一言コメント</th>
+            <th></th>
+          </tr>
+        </thead>
+         <% @artists.each do |artist| %>
+          <tbody>
+            <tr>
+              <td>
+                <!-- 要修正！ -->
+                <%= artist.artist_name %>
+                 <!-- <p>アーティスト名</p> -->
+              </td>
+              <td>
+                <!-- 要修正！ -->
+                <%= artist.comment %>
+                 <!-- <p>一言コメント</p> -->
+              </td>
+              <td>
+                <%= link_to "Show", edit_artist_path(artist.id) %>
+              </td>
+            </tr>
+          </tbody>
+         <% end %>
+      </table>
+    </div>
+  </div>
+</div>
