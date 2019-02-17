@@ -4,7 +4,8 @@
       <% if notice %>
         <p class="notice"><%= notice %></p>
       <% end %>
-      <%= link_to "TOPへ戻る", admin_top_path %>
+      <%= link_to "TOP", admin_top_path, class: "btn btn-primary" %>
+      <%= link_to "New Artist", new_artist_path, class: "btn btn-warning" %>
       <h2>アーティスト一覧</h2>
       <table class="table">
         <thead>

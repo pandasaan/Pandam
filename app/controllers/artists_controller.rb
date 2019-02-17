@@ -1,4 +1,5 @@
 class ArtistsController < ApplicationController
+  before_action :authenticate_admin!
   def new
     @artist = Artist.new
   end
@@ -6,7 +7,7 @@ class ArtistsController < ApplicationController
   def create
     artist = Artist.new(artist_params)
     if artist.save
-      flash[:notice] = "登録が成功しましt！"
+      flash[:notice] = "登録が成功しました！"
       redirect_to artists_path
     else
       render "new"
@@ -29,6 +30,13 @@ class ArtistsController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def destroy
+    artist = Artist.find(params[:id])
+    artist.destroy
+    flash[:notice] = "削除しました"
+    redirect_to artists_path
   end
 
   private

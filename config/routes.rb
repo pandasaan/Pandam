@@ -31,7 +31,7 @@ devise_for :users, controllers: {
   resources :items, only: [:show]
 
   # artists関連
-  resources :artists, only: [:new, :create, :index, :edit, :update]
+  resources :artists, only: [:new, :create, :index, :edit, :update, :destroy]
 
   # carts関連
   resources :carts, only: [:create, :show, :update, :destroy]

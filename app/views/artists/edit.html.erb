@@ -11,9 +11,10 @@
         <label for="comment">一言コメント</label>
         <%= f.text_area :comment, id: "comment", class: "form-control" %>
       </div>
-      <%= f.submit "登録" %>
+      <%= f.submit "Update", class: "btn btn-info" %>
       <% end %>
-      <%= link_to "Back", artists_path %>
+      <%= link_to "Back", artists_path %><br>
+      <%= link_to "Delete", artist_path, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}, method: :delete %>
     </div>
   </div>
 </div>
