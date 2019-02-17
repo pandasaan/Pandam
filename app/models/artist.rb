@@ -1,5 +1,4 @@
 class Artist < ApplicationRecord
   has_many :items
-
-  validate :artist_name, presence: true
+  # accepts_nested_attributes_for :items, reject_if: :all_blank, allow_destroy: true
 end

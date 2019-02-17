@@ -10,9 +10,4 @@ class User < ApplicationRecord
   has_many :oders, dependent: :destroy
   has_many :carts, dependent: :destroy
 
-  validates :name, presence: true
-  validates :name_kana, presence: true
-  validates :postal_code, presence: true
-  validates :address, presence: true
-  validates :tell, presence: true
 end
