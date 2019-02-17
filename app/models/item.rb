@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   has_many :discs, dependent: :destroy
   has_many :tunes, through: :discs
   has_many :carts
-  has_many :items, through: :carts
+  has_many :users, through: :carts
   has_many :oder_items
 
   validates :title, presence: true
