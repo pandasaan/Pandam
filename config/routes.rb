@@ -34,7 +34,7 @@ devise_for :users, controllers: {
   resources :artists, only: [:new, :create, :index, :edit, :update, :destroy]
 
   # carts関連
-  resources :carts, only: [:create, :show, :update, :destroy]
+  resources :carts, only: [:create, :index, :update, :destroy]
 
   # adminトップ
   get '/admin/top' => 'admin#top'
