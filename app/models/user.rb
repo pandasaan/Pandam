@@ -9,7 +9,7 @@
   has_many :shipments, dependent: :destroy
   has_many :oders, dependent: :destroy
   has_many :carts, dependent: :destroy
-  has_many :items, through: => :carts
+  has_many :items, through: :carts
 
   validates :name, presence: true
   validates :name_kana, presence: true
