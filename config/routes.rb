@@ -14,8 +14,8 @@ devise_for :users, controllers: {
 }
 
   # users関連
-  get '/users/cancel' => 'users#cancel'
-  patch '/users/cancel' => 'users#flg_update'
+  get '/users/delete' => 'users#cancel'
+  patch '/users/delete' => 'users#flg_update'
   resource :users, only: [:show, :edit, :update]
 
   # shipments関連
