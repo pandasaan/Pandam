@@ -1,2 +1,25 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div align="center">
+	<div style="padding: 10px; margin-bottom: 10px; border: 5px double #333333;">
+	    <div>
+			<ul style="list-style-type:circle;">
+				<li>名前（性・名) ：<%= @user.name %></li>
+				<li>郵便番号　　　：<%= @user.postal_code %></li>
+				<li>住所　　　　　：<%= @user.address %></li>
+				<li>メールアドレス：<%= @user.email %></li>
+			</ul>
+		</div>
+		<div>
+			<ul style="list-style-type:circle;">
+				<li>名前（カナ)   ：<%= @user.name_kana %></li>
+				<li>電話番号　　　：<%= @user.tell %></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div>
+	<% @order.each do |order| %>
+	<%= attachment_image_tag order.oder_item.item.image, :image, :fill, 100,100,format: 'jpg' %>
+	<%= order.created_at %>
+	<%=link_to "商品詳細", users_path(users.id) %>
+		<% end %>
+</div>
