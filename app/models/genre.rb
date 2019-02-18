@@ -1,5 +1,4 @@
 class Genre < ApplicationRecord
-	has_many :items
-
-  validates :genre, presence: true
+  has_many :items
+  # accepts_nested_attributes_for :items, reject_if: :all_blank, allow_destroy: true
 end

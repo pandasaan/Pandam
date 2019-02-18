@@ -4,8 +4,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string :email
+      t.string :encrypted_password
 
       ## Recoverable
       t.string   :reset_password_token
@@ -15,7 +15,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.datetime :remember_created_at
 
       ## Trackable
-       t.integer  :sign_in_count, default: 0, null: false
+       t.integer  :sign_in_count, default: 0
        t.datetime :current_sign_in_at
        t.datetime :last_sign_in_at
        t.string   :current_sign_in_ip
@@ -32,13 +32,13 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      t.string :name, null: false, default: ""
-      t.string :name_kana, null: false, default: ""
-      t.string :postal_code, null: false, default: ""
-      t.string :address, null: false, default: ""
-      t.string :tell, null: false, default: ""
-      t.integer :user_is_deleted, default: 0
-      t.timestamps null: false
+      t.string :name
+      t.string :name_kana
+      t.string :postal_code
+      t.string :address
+      t.string :tell
+      t.integer :user_is_deleted
+      t.timestamps
     end
 
     add_index :users, :name
