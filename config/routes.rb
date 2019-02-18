@@ -37,7 +37,7 @@ devise_for :users, controllers: {
   resources :carts, only: [:create, :index, :update, :destroy]
 
   # adminトップ
-  get '/admin/top' => 'admin#top'
+  get '/admin/top' => 'admins#top'
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]

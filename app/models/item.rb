@@ -19,3 +19,5 @@ class Item < ApplicationRecord
   validates :label_id, presence: true
   validates :price, presence: true
   validates :stock, presence: true
+
+end
