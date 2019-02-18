@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
 
-  devise_for :admins
-  devise_for :users
+
   root :to => 'items#top'
+  devise_for :admins, controllers: {
+  sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
+}
+devise_for :users, controllers: {
+  sessions:      'users/sessions',
+  passwords:     'users/passwords',
+  registrations: 'users/registrations'
+}
 
   # users関連
   get '/users/cancel' => 'users#cancel'
@@ -21,8 +30,11 @@ Rails.application.routes.draw do
   # items関連
   resources :items, only: [:show]
 
+  # artists関連
+  resources :artists, only: [:new, :create, :index, :edit, :update, :destroy]
+
   # carts関連
-  resources :carts, only: [:create, :show, :update, :destroy]
+  resources :carts, only: [:create, :index, :update, :destroy]
 
   # adminトップ
   get '/admin/top' => 'admin#top'

@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   def create
   end
 
-  def show
+  def index
   end
 
   def update

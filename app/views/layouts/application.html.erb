@@ -10,8 +10,55 @@
   </head>
 
   <body>
-    <img src="assets/logo.jpg">
-    <div>Logo made with <a href="https://www.designevo.com/en/" title="Free Online Logo Maker">DesignEvo</a></div>
+
+  <header class="navbar navbar-inverse" height= "70px">
+  <div class="container">
+   <nav class="nav navbar-nav navbar-left">
+    <img src="assets/logo.jpg" height= "60px">
+    <span>Logo made with <a href="https://www.designevo.com/en/" title="Free Online Logo Maker">DesignEvo</a></span>
+   </nav>
+   <nav>
+    <ul class="nav navbar-nav navbar-right">
+    <% if user_signed_in? %>
+       <li role="presentation">
+         <%= link_to users_path(current_user.id), class: "glyphicon glyphicon-home home" do %>
+           <span aria-hidden="true"> マイページ</span>
+         <% end %>
+       </li>
+       <li role="presentation">
+         <%= link_to carts_path, class: "glyphicon glyphicon-user users" do %>
+            <span aria-hidden="true"> カート</span>
+         <% end %>
+      </li>
+      <li role="presentation">
+         <%= link_to destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" do %>
+            <span aria-hidden="true"> ログアウト</span>
+         <% end %>
+      </li>
+    <% else %>
+      <li role="presentation">
+         <%= link_to new_user_session_path, class: "glyphicon glyphicon-log-in sign_in" do %>
+            <span aria-hidden="true"> ログイン</span>
+         <% end %>
+      </li>
+      <li role="presentation">
+         <%= link_to new_user_registration_path, class: "glyphicon glyphicon-edit sign_up" do %>
+            <span aria-hidden="true"> 新規登録</span>
+         <% end %>
+      </li>
+    <% end %>
+    </ul>
+   </nav>
+ </div>
+  </header>
+
+<% if flash[:notice] %>
+<p id=notice><%= flash[:notice] %></p>
+<% end %>
+
+<div class="body">
     <%= yield %>
+</div>
+
   </body>
 </html>
