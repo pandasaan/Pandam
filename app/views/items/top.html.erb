@@ -1,2 +1,22 @@
-<h1>Items#top</h1>
-<p>Find me in app/views/items/top.html.erb</p>
+<div class="top">
+<div class="container">
+<div class="row">
+  <div class="col-xs-1">
+  </div>
+
+  <div class="col-xs-10">
+	<h2 class="clearfix">top test</h2>
+	    <div class="cart_item" >
+      <% @items.each do |item| %>
+                    <%= item.title %>
+            <% end %>
+        </div>
+
+
+
+	 </div>
+  </div>
+  <div class="col-xs-1">
+  </div>
+</div>
+</div>

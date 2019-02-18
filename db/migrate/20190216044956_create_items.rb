@@ -8,7 +8,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :label_id
       t.integer :price
       t.integer :stock
-      t.integer :item_is_deleted
+      t.integer :item_is_deleted, default: 0
 
       t.timestamps
     end

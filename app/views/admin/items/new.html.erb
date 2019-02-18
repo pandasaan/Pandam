@@ -1,0 +1,26 @@
+<div class= "container">
+<h1>新規作成</h1>
+
+
+
+<%= form_for([:admin, @item]) do |f| %>
+
+  <h4>ジャケット画像</h4>
+  <label class="control-label sr-only" for="inputEmail">ItemImage</label>
+  <%#= f.attachment_field :image %>
+  <!-- , placeholder: "ジャケット画像", class: "image"  -->
+
+  <h4>シングル/アルバム名</h4>
+  <div><%= f.text_field :title, class: "item_title" %></div>
+
+  <h4>値段</h4>
+  <div><%= f.text_field :price, class: "item_price" %></div>
+
+  <h4>在庫数</h4>
+  <div><%= f.text_field :stock, class: "item_stock" %></div>
+
+
+<p><%= f.submit "New", class: "btn btn-primary" %></p>
+<% end %>
+
+</div>
