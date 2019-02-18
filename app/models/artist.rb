@@ -6,3 +6,8 @@ class Artist < ApplicationRecord
 
   validates :artist_name, presence: true
 
+<<<<<<< HEAD
+=======
+  validates :artist_name, presence: true
+end
+>>>>>>> develop
