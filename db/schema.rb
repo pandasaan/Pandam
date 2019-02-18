@@ -91,25 +91,6 @@ ActiveRecord::Schema.define(version: 2019_02_17_033246) do
   end
 
   create_table "orders", force: :cascade do |t|
-<<<<<<< HEAD
-=======
-    t.integer "user_id", null: false
-    t.string "order_name", default: "", null: false
-    t.string "order_postal_code", default: "", null: false
-    t.string "order_address", default: "", null: false
-    t.integer "total_price", null: false
-    t.integer "dlv_status", default: 0, null: false
-    t.integer "cancell_status", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "shipments", force: :cascade do |t|
-    t.string "shipment_name", default: "", null: false
-    t.string "shipment_name_kana", default: "", null: false
-    t.string "shipment_postal_code", default: "", null: false
-    t.string "shipment_address", default: "", null: false
->>>>>>> develop
     t.integer "user_id", null: false
     t.string "order_name", default: "", null: false
     t.string "order_postal_code", default: "", null: false
