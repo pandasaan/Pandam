@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <%= link_to "TOP", admin_top_path, class: "btn btn-primary" %>
+      <%= link_to "New Artist", new_admin_artist_path, class: "btn btn-warning" %>
+      <h2>アーティスト一覧</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>アーティスト名</th>
+            <th>一言コメント</th>
+            <th></th>
+          </tr>
+        </thead>
+         <% @artists.each do |artist| %>
+          <tbody>
+            <tr>
+              <td>
+                <%= artist.artist_name %>
+              </td>
+              <td>
+                <%= artist.comment %>
+              </td>
+              <td>
+                <%= link_to "Show", edit_admin_artist_path(artist.id) %>
+              </td>
+            </tr>
+          </tbody>
+         <% end %>
+      </table>
+    </div>
+  </div>
+</div>
