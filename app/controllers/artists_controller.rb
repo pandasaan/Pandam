@@ -7,7 +7,7 @@ class ArtistsController < ApplicationController
   def create
     artist = Artist.new(artist_params)
     if artist.save
-      flash[:notice] = "登録が成功しました！"
+      flash[:notice] = "アーティストを新規登録しました！"
       redirect_to artists_path
     else
       render "new"
@@ -25,7 +25,7 @@ class ArtistsController < ApplicationController
   def update
     artist = Artist.find(params[:id])
     if artist.update(artist_params)
-      flash[:notice] = "編集に成功しました！"
+      flash[:notice] = "編集が完了しました！"
       redirect_to artists_path
     else
       render "edit"
