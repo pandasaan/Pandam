@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'order_items/create'
+  get 'order_items/update'
   root :to => 'items#top'
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',

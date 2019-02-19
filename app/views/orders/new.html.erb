@@ -7,6 +7,22 @@
 
   <div class="col-xs-11">
 	<h2>レジページ</h2>
+
+<div>
+  <h1>送付先一覧</h1>
+  <% @shipments.each do |shipment| %>
+      <h6>名前（姓、名）</h6>
+      <%= shipment.shipment_name %>
+      <h6>名前(カナ）</h6>
+      <%= shipment.shipment_name_kana %>
+      <h6>郵便番号</h6>
+      <%= shipment.shipment_postal_code %>
+      <h6>住所</h6>
+      <%= shipment.shipment_address %>
+      <br>
+  <% end %>
+</div>
+
     <table class="table table-hover">
       <thead>
         <tr>
@@ -34,6 +50,8 @@
        <div>
        	<%= link_to orders_path, method: :post do %>購入確定<% end %>
     		</div>
+
+
   </div>
 </div>
 </div>

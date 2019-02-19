@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   def new
 
+    @shipments = Shipment.where(user_id: current_user.id)
+
     @carts = Cart.where(user_id: current_user.id)
         total = 0
         @carts.each do |a|
