@@ -1,5 +1,6 @@
 <div class="container">
   <h2>管理者ページ</h2>
+
   <div class="list-group">
     <%= link_to "ユーザー一覧", admin_users_path, class: "list-group-item" %>
     <%= link_to "購入履歴一覧", admin_orders_path, class: "list-group-item" %>
@@ -8,4 +9,6 @@
     <%= link_to "レーベル一覧", admin_labels_path, class: "list-group-item" %>
     <%= link_to "ジャンル一覧", admin_genres_path, class: "list-group-item" %>
   </div>
+
+  <%= link_to "Log out", destroy_admin_session_path, method: :delete, class: "btn btn-danger" %>
 </div>
