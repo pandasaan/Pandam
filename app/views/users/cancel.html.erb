@@ -1,2 +1,15 @@
-<h1>Users#cancel</h1>
-<p>Find me in app/views/users/cancel.html.erb</p>
+
+退会ページ
+<div style="padding: 10px; border: 1px dotted; #333333;border-radius: 10px; margin: 10px;">
+	<div>
+		本当に<br>
+		退会しますか？
+	</div>
+	<span style="background:#FFFFFF; padding:0px; border-radius: 10px; border: 2px dotted #33CC33;">
+	    <%= link_to "退会せずにマイページに戻る", users_path(@user) %>
+	</span>
+
+	<span style="background:#FFFFFF; padding:0px; border-radius: 10px; border: 2px dotted #9370DB;">
+		退会する
+	</span>
+</div>
