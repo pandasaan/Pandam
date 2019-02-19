@@ -21,7 +21,7 @@
     <ul class="nav navbar-nav navbar-right">
     <% if user_signed_in? %>
        <li role="presentation">
-         <%= link_to users_path(current_user.id), class: "glyphicon glyphicon-home home" do %>
+         <%= link_to user_path(current_user.id), class: "glyphicon glyphicon-home home" do %>
            <span aria-hidden="true"> マイページ</span>
          <% end %>
        </li>

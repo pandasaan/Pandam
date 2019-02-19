@@ -1,2 +1,25 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>User info</h1>
+<%= form_for(@users) do |f| %>
+
+    <h4>名前（姓、名）</h4>
+    <%= f.text_field :name %>
+
+    <h4>名前（カナ）</h4>
+    <%= f.text_field :name_kana %>
+
+    <h4>郵便番号</h4>
+    <%= f.text_field :postal_code %>
+
+    <h4>住所</h4>
+    <%= f.text_field :address %>
+
+    <h4>電話番号</h4>
+    <%= f.text_field :tell %>
+
+    <h4>email</h4>
+    <%= f.text_field :email %>
+
+
+
+    <%= f.submit 'Update User' %>
+<% end %>
