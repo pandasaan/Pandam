@@ -9,6 +9,7 @@ class ShipmentsController < ApplicationController
 
   def index
     @shipments = Shipment.new
+    @shipment = Shipment.all
 
   end
 
