@@ -1,22 +1,10 @@
-<div class="top">
 <div class="container">
-<div class="row">
-  <div class="col-xs-1">
+  <h2 class="clearfix">top test</h2>
+  <div class="cart_item" >
+    <% @items.each do |item| %>
+      <%= link_to carts_path(item_id: item.id), method: :post, data: {confirm: "カートに追加しますか？"} do %>
+        <%= item.title %>
+      <% end %>
+    <% end %>
   </div>
-
-  <div class="col-xs-10">
-	<h2 class="clearfix">top test</h2>
-	    <div class="cart_item" >
-      <% @items.each do |item| %>
-                    <%= item.title %>
-            <% end %>
-        </div>
-
-
-
-	 </div>
-  </div>
-  <div class="col-xs-1">
-  </div>
-</div>
 </div>

@@ -1,19 +1,48 @@
-<h1>新規投稿</h1>
+<div class="container">
+	<div class="row">
 
-<%= form_for(@shipments) do |f| %>
+<div class="col-md-6">
+	<h1>新規投稿</h1>
 
-    <h4>名前（姓、名）</h4>
-    <%= f.text_field :shipment_name %>
+	<%= form_for(@shipments) do |f| %>
 
-    <h4>名前（カナ）</h4>
-    <%= f.text_field :shipment_name_kana %>
+	<h4>名前（姓、名）</h4>
+	<%= f.text_field :shipment_name %>
 
-    <h4>郵便番号</h4>
-    <%= f.text_field :shipment_postal_code %>
+	<h4>名前（カナ）</h4>
+	<%= f.text_field :shipment_name_kana %>
 
-    <h4>住所</h4>
-    <%= f.text_field :shipment_address %>
+	<h4>郵便番号</h4>
+	<%= f.text_field :shipment_postal_code %>
 
-    <%= f.submit '新規登録' %>
+	<h4>住所</h4>
+	<%= f.text_field :shipment_address %>
 
-<% end %>
+	<%= f.submit '新規登録' %>
+	<% end %>
+
+	<%= link_to "Back", users_path  %>
+
+</div>
+
+
+<div class="col-md-6">
+	<h1>送付先一覧</h1>
+	<% @shipment.each do |shipment| %>
+	    <%= link_to edit_shipment_path(shipment.id) do %>
+	    <h6>名前（姓、名）</h6>
+	    <%= shipment.shipment_name %>
+	    <h6>名前(カナ）</h6>
+	    <%= shipment.shipment_name_kana %>
+	    <h6>郵便番号</h6>
+	    <%= shipment.shipment_postal_code %>
+	    <h6>住所</h6>
+	    <%= shipment.shipment_address %>
+	    <% end %>
+	    <br>
+	<% end %>
+</div>
+
+
+
+
