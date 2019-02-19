@@ -1,6 +1,5 @@
 <div class="container">
-  <div class="row">
-    <div class="col-10">
+
       <h2>ジャンル新規作成</h2>
       <%= form_for(@genre, url: admin_genres_path, method: :post) do |f| %>
         <div class="form-group">
@@ -9,6 +8,5 @@
         </div>
         <%= f.submit "Create" %>
       <% end %>
-    </div>
-  </div>
+
 </div>
