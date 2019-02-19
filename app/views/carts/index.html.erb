@@ -1,36 +1,44 @@
 <div class="container">
 
-  <h2><%= current_user.name %>さんのカート内商品一覧</h2>
+  <div class="row">
+    <h2><%= current_user.name %>さんのカート内商品一覧</h2>
 
-  <%= link_to "買い物を続ける", root_path %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>商品情報</th>
-        <th>値段</th>
-        <th>数量</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-  <% if @carts.count != 0 %>
-    <% @carts.each do |cart| %>
-      <tr>
-          <!-- 後で画像情報に修正 -->
-        <td><%= cart.item.title %></td>
-        <td><%= cart.item.price %></td>
-        <td><%= cart.amount %></td>
-        <td>
-          <%= link_to "カートから削除", cart_path(cart.id),method: :delete, data: {confirm: "カートから削除しますか？"} %>
-        </td>
-        <td>数量更新ボタン</td>
-      </tr>
+    <%= link_to "買い物を続ける", root_path %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>商品情報</th>
+          <th>値段</th>
+          <th>数量</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+    <% if @carts.count != 0 %>
+      <% @carts.each do |cart| %>
+        <tr>
+            <!-- 後で画像情報に修正 -->
+          <td><%= cart.item.title %></td>
+          <td><%= cart.item.price %></td>
+          <td>
+            <%= form_for(cart) do |f| %>
+              <%= f.number_field :amount, min: 1, max: cart.item.stock %>
+              <%= f.submit "数量を変更" %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "カートから削除", cart_path(cart.id),method: :delete, data: {confirm: "カートから削除しますか？"} %>
+          </td>
+        </tr>
+      <% end %>
+    <% elsif @carts.empty? %>
+        <tr>
+          <td colspan=4 class="cart_message"><b>カートに商品が追加されていません</b></td>
+        </tr>
     <% end %>
-  <% elsif @carts.blank? %>
-      <tr><td colspan=4 class="cart_message"><b>カートに商品が追加されていません</b></td></tr>
-  <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 
+  <%= link_to "購入画面へ進む", new_order_path, class: "pull-right btn btn-warning" %>
 </div>

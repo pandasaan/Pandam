@@ -1,2 +1,19 @@
-<h1>Shipments#index</h1>
-<p>Find me in app/views/shipments/index.html.erb</p>
+<h1>新規投稿</h1>
+
+<%= form_for(@shipments) do |f| %>
+
+    <h4>名前（姓、名）</h4>
+    <%= f.text_field :shipment_name %>
+
+    <h4>名前（カナ）</h4>
+    <%= f.text_field :shipment_name_kana %>
+
+    <h4>郵便番号</h4>
+    <%= f.text_field :shipment_postal_code %>
+
+    <h4>住所</h4>
+    <%= f.text_field :shipment_address %>
+
+    <%= f.submit '新規登録' %>
+
+<% end %>
