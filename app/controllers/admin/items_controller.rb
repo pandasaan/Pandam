@@ -14,7 +14,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-  	@item = Item.all
+    # 一覧は複数形の方がいいので@item → @itemsに変更しました
+  	@items = Item.all
   end
 
   def show
