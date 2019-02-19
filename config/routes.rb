@@ -47,6 +47,7 @@ devise_for :users, controllers: {
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     patch '/admin/items/:id/flg_update' => 'items#flg_update'
     resources :labels, only: [:new, :create, :edit, :update, :index, :destroy]
+    resources :genres, only: [:new, :create, :edit, :update, :index, :destroy]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
