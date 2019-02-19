@@ -17,3 +17,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require cocoon
+
+$(function(){
+  setTimeout("$('#notice').fadeOut('slow')", 3000) 
+})
