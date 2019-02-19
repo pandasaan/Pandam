@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_17_033246) do
+ActiveRecord::Schema.define(version: 2019_02_18_110526) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -142,7 +142,9 @@ ActiveRecord::Schema.define(version: 2019_02_17_033246) do
     t.integer "user_is_deleted", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["address"], name: "index_users_on_address"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name"
     t.index ["name_kana"], name: "index_users_on_name_kana"

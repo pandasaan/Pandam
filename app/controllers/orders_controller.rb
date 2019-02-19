@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-
       carts = Cart.where(user_id: current_user.id)
         total = 0
         carts.each do |a|
@@ -27,7 +26,6 @@ class OrdersController < ApplicationController
 
     if order.save
     redirect_to new_order_path
-    flash[:notice] = "保存ok"
     else
     redirect_to new_order_path
     flash[:notice] = "失敗"
