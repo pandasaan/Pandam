@@ -20,7 +20,7 @@ devise_for :users, controllers: {
 
   resources :users, only: [:show, :edit, :update] do
     resources :shipments, only: [:create, :index, :edit, :update, :destroy]
-
+  end
 
 
   # shipments関連
