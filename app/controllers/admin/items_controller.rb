@@ -7,8 +7,10 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @disc = @item.discs.build
     @tune = @disc.tunes.build
-    @item.save
-    redirect_to admin_items_path
+    if @item.save
+       redirect_to admin_items_path
+    else
+       render :new
   end
 
   def index

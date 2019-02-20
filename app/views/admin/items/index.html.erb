@@ -17,7 +17,7 @@
         値段
       </th>
       <th>
-        アーティスト
+        アーティスト名
       </th>
       <th></th>
     </tr>
@@ -36,7 +36,7 @@
       </td>
       <td>
         <!-- 要修正 -->
-        <p>アーティスト名</p>
+        <p><%= item.artist_id %></p>
       </td>
       <td>
         <%= link_to "詳細", admin_item_path(item.id) %>
