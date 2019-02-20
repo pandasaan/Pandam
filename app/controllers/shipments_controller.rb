@@ -3,13 +3,13 @@ class ShipmentsController < ApplicationController
     @shipments = Shipment.new(shipment_params)
     @shipments.user_id = current_user.id
     @shipments.save
-    redirect_to '/shipments'
+    redirect_to user_shipments_path
 
   end
 
   def index
     @shipments = Shipment.new
-    @shipment = Shipment.all
+    @shipment = current_user.shipments
 
   end
 
@@ -24,9 +24,9 @@ class ShipmentsController < ApplicationController
   end
 
   def destroy
-    @shipments = Shipment.find(params[:id])
-    @shipments.destroy
-    redirect_to user_path
+    shipments = Shipment.find(params[:id])
+    shipments.destroy
+    redirect_to user_shipments_path
   end
 
     private

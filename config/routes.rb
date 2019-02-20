@@ -15,10 +15,15 @@ devise_for :users, controllers: {
   # users関連
   get '/users/delete' => 'users#cancel'
   patch '/users/delete' => 'users#flg_update'
-  resources :users, only: [:show, :edit, :update]
+
+  resources :users, only: [:show, :edit, :update] do
+    resources :shipments, only: [:create, :index, :edit, :update, :destroy]
+  end
 
   # shipments関連
-  resources :shipments, only: [:create, :index, :edit, :update, :destroy]
+  
+
+  # delete "/users/:user_id/shipments/:id" => "shipments#destroy", as: "delete_shipment"
 
   # orders関連
   get '/orders/:id/result' => 'orders#result'

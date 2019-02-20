@@ -1,5 +1,5 @@
 <h1>送付先編集</h1>
-<%= form_for(@shipments) do |f| %>
+<%= form_for @shipments, url: user_shipment_path(current_user.id) do |f| %>
 
     <h4>名前（姓、名）</h4>
     <%= f.text_field :shipment_name %>
@@ -16,4 +16,4 @@
 
     <%= f.submit '編集' %>
 <% end %>
-<%= link_to "削除", destroy_shipment_path(@shipments.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<%= link_to "削除",  user_shipment_path(user_id: current_user.id, id: @shipments.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
