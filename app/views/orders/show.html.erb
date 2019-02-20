@@ -1,2 +1,21 @@
 <h1>Orders#show</h1>
 <p>Find me in app/views/orders/show.html.erb</p>
+
+  <p><% @ships.each do |ship| %></p>
+<%= radio_button '' ship.id %>
+<%= ship.id %>
+<%= ship.user_id %>
+<%= ship.shipment_name %>
+<%= ship.shipment_name_kana %>
+<%= ship.shipment_postal_code %>
+<%= ship.shipment_address %>
+  <% end %>
+</div>
+<%= f.label ship.id do %>
+<%= radio_button_tag '送付先1'  %>
+  <% end %>
+
+  <%= form_tag ("/orders/result"), method: "get", remote: true do %>
+  <%= select_tag :shipment, options_from_collection_for_select(@ships, :id, :shipment_name) %>
+<%= submit_tag "送信先" %>
+<% end %>
