@@ -13,38 +13,37 @@ class OrdersController < ApplicationController
   end
 
   def create
-      carts = Cart.where(user_id: current_user.id)
-        total = 0
-        carts.each do |a|
-          total += a.amount * a.item.price
-        end
-    total_price = total
+          carts = Cart.where(user_id: current_user.id)
+              total = 0
+              carts.each do |a|
+                total += a.amount * a.item.price
+              end
+      total_price = total
 
-    name = current_user.name
-    postal_code = "1"
-    address = "1"
+      name = current_user.name
+      postal_code = "1"
+      address = "1"
 
     order = Order.new(user_id: current_user.id, order_name: name, order_postal_code: postal_code, order_address: address, total_price: total_price)
+    order.save!
 
-    if order.save
-    redirect_to new_order_path
-    else
-    redirect_to new_order_path
-    flash[:notice] = "失敗"
-    end
-
+          carts.each do |cart|
+    order_items = OrderItem.new(item_id: cart.item.id, amount: cart.amount, order_price: cart.item.price, order_id: order.id)
+    order_items.save!
+          end
+    redirect_to result_order_path(id: order.id)
+    flash[:notice] = "ご購入ありがとうございます！"
   end
 
   def show
-        flash[:notice] = "ご購入ありがとうございます！"
-    redirect_to result_order_path
+
   end
 
   def index
   end
 
   def result
-    @orders = Order.where(user_id: current_user.id)
+    @orders = Order.find(params[:id])
   end
 
   def flg_update
