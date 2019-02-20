@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get "/orders/result" => "orders#kakunin"
+  get "/orders/result" => "orders#modal"
+
   root :to => 'items#top'
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',

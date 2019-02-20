@@ -10,7 +10,7 @@
         <h3>送付先一覧</h3>
             <div>
               <%= form_tag ("/orders/result"), method: "get", remote: true do %>
-                <%= select_tag :shipment, options_from_collection_for_select(@ships, :id, :shipment_name) %>
+                <%= select_tag :shipment_id, options_from_collection_for_select(@ships, :id, :shipment_name) %>
                 <%= submit_tag "送信先", class: "btn btn-lg btn-primary" %>
               <% end %>
             </div>

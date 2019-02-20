@@ -9,6 +9,8 @@
       <thead>
         <tr>
           <th>購入者名</th>
+          <th>送付先名前</th>
+          <th>送付先郵便番号</th>
           <th>送付先住所</th>
           <th>値段</th>
           <th>数量</th>
@@ -20,6 +22,8 @@
       <% @orders.each do |order| %>
         <tr>
           <td><%= order.order.user.name %></td>
+          <td><%= order.order.order_name %></td>
+          <td><%= order.order.order_postal_code %></td>
           <td><%= order.order.order_address %></td>
           <td>￥<%= price = order.order_price %></td>
           <td><%= amount = order.amount %>枚</td>
