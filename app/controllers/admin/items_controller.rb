@@ -8,7 +8,6 @@ class Admin::ItemsController < ApplicationController
     @disc = @item.discs.build
     @tune = @disc.tunes.build
     @item.save
-    binding.pry
     redirect_to admin_items_path
   end
 

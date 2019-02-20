@@ -3,9 +3,9 @@ class Item < ApplicationRecord
 
   attachment :image
 
-  belongs_to :artist, optional: true
-  belongs_to :genre, optional: true
-  belongs_to :label, optional: true
+  belongs_to :artist
+  belongs_to :genre
+  belongs_to :label
   has_many :discs, dependent: :destroy
   has_many :tunes, through: :discs
   has_many :carts
@@ -16,7 +16,7 @@ class Item < ApplicationRecord
 
   validates :title, presence: true
   validates :artist_id, presence: true
-  validates :image_id, presence: true
+  validates :image, presence: true
   validates :genre_id, presence: true
   validates :label_id, presence: true
   validates :price, presence: true
