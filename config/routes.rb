@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  get "/orders/result" => "orders#kakunin"
   root :to => 'items#top'
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',

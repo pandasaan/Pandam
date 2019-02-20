@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
-  def new
-
-    @shipments = Shipment.where(user_id: current_user.id)
+  def kakunin
+    @ship = Shipment.find(params[:shipment_id])
 
     @carts = Cart.where(user_id: current_user.id)
         total = 0
@@ -9,10 +8,17 @@ class OrdersController < ApplicationController
           total += a.amount * a.item.price
         end
     @total_price = total
+  end
+
+  def new
+
+    @ships = Shipment.where(user_id: current_user.id)
 
   end
 
   def create
+    binding.pry
+    ship = Shipment.find(params[:shipment])
           carts = Cart.where(user_id: current_user.id)
               total = 0
               carts.each do |a|

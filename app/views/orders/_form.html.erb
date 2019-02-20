@@ -1,0 +1,36 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>商品情報</th>
+            <th>値段</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @carts.each do |cart| %>
+          <tr>
+            <td>画像</td>
+            <td>￥<%= cart.item.price %></td>
+            <td><%= cart.amount %>枚</td>
+            <td><%= cart.item.price * cart.amount %></td>
+          </tr>
+        </tbody>
+        <% end %>
+    </table>
+         <div>合計</div>
+         <div>
+         	<%= @total_price %>
+         </div>
+         <div>
+         	<%= form_tag orders_path, method: :post do %>
+         		<%= hidden_field_tag :shipment_id, @ship.id %>
+        		<%= @ship.shipment_name %>
+        	購入確定
+        	<%= submit_tag "購入", class: "btn btn-lg btn-primary" %>
+        	<% end %>
+      	 </div>
+  </div>
+</div>

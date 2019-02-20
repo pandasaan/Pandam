@@ -1,57 +1,32 @@
 <div class="container">
-<div class="row">
-  <div class="col-xs-1">
-  </div>
+  <div class="row">
+    <div class="col-xs-1">
+    </div>
 
 
 
-  <div class="col-xs-11">
-	<h2>レジページ</h2>
+    <div class="col-xs-11">
+  	  <h2>レジページ</h2>
+        <h3>送付先一覧</h3>
+            <div>
+              <%= form_tag ("/orders/result"), method: "get", remote: true do %>
+                <%= select_tag :shipment, options_from_collection_for_select(@ships, :id, :shipment_name) %>
+                <%= submit_tag "送信先", class: "btn btn-lg btn-primary" %>
+              <% end %>
+            </div>
+            <div>
+              <% @ships.each do |ship| %></p>
 
-<div>
-  <h1>送付先一覧</h1>
-  <% @shipments.each do |shipment| %>
-      <h6>名前（姓、名）</h6>
-      <%= shipment.shipment_name %>
-      <h6>名前(カナ）</h6>
-      <%= shipment.shipment_name_kana %>
-      <h6>郵便番号</h6>
-      <%= shipment.shipment_postal_code %>
-      <h6>住所</h6>
-      <%= shipment.shipment_address %>
-      <br>
-  <% end %>
-</div>
-
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>商品情報</th>
-          <th>値段</th>
-          <th>数量</th>
-          <th>小計</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @carts.each do |cart| %>
-        <tr>
-          <td>画像</td>
-          <td>￥<%= cart.item.price %></td>
-          <td><%= cart.amount %>枚</td>
-          <td><%= cart.item.price * cart.amount %></td>
-        </tr>
-      </tbody>
-    <% end %>
-    </table>
-       <div>合計</div>
-       <div>
-       	<%= @total_price %>
-       </div>
-       <div>
-       	<%= link_to orders_path, method: :post do %>購入確定<% end %>
-    		</div>
-
-
+                <%= ship.id %>
+                <%= ship.user_id %>
+                <%= ship.shipment_name %>
+                <%= ship.shipment_name_kana %>
+                <%= ship.shipment_postal_code %>
+                <%= ship.shipment_address %>
+              <% end %>
+            </div>
   </div>
 </div>
-</div>
+
+
+<div id="order-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
