@@ -8,25 +8,49 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-
   <header class="navbar navbar-inverse" height= "70px">
   <div class="container">
    <nav class="nav navbar-nav navbar-left">
-    <a href="/"><img src="assets/logo.jpg" height= "60px"></a>
+    <a href="/"><img src="/assets/logo.jpg" height= "60px"></a>
     <span>Logo made with <a href="https://www.designevo.com/en/" title="Free Online Logo Maker">DesignEvo</a></span>
    </nav>
    <nav>
     <ul class="nav navbar-nav navbar-right">
-    <% if user_signed_in? %>
+    <% if admin_signed_in? %>
+       <li role="presentation">
+         <%= link_to admin_orders_path, class: "glyphicon glyphicon-home home" do %>
+           <span aria-hidden="true"> 購入一覧</span>
+         <% end %>
+       </li>
+       <li role="presentation">
+         <%= link_to admin_items_path, class: "glyphicon glyphicon-gift" do %>
+            <span aria-hidden="true"> 商品一覧</span>
+         <% end %>
+      </li>
+      <li role="presentation">
+         <%= link_to artists_path, class: "glyphicon glyphicon-comment" do %>
+            <span aria-hidden="true"> コメント一覧</span>
+         <% end %>
+      </li>
+      <li role="presentation">
+         <%= link_to admin_users_path, class: "glyphicon glyphicon-user users" do %>
+            <span aria-hidden="true"> ユーザー一覧</span>
+         <% end %>
+      </li>
+      <li role="presentation">
+         <%= link_to destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" do %>
+            <span aria-hidden="true"> ログアウト</span>
+         <% end %>
+      </li>
+    <% elsif user_signed_in? %>
        <li role="presentation">
          <%= link_to user_path(current_user.id), class: "glyphicon glyphicon-home home" do %>
            <span aria-hidden="true"> マイページ</span>
          <% end %>
        </li>
        <li role="presentation">
-         <%= link_to carts_path, class: "glyphicon glyphicon-user users" do %>
+         <%= link_to carts_path, class: "glyphicon glyphicon-shopping-cart" do %>
             <span aria-hidden="true"> カート</span>
          <% end %>
       </li>
@@ -53,11 +77,14 @@
   </header>
 
 <% if flash[:notice] %>
-<p id=notice><%= flash[:notice] %></p>
+  <p id=notice><%= flash[:notice] %></p>
 <% end %>
 
 <div class="body">
-    <%= yield %>
+  <% if flash[:notice] %>
+    <p id=notice><%= flash[:notice] %></p>
+  <% end %>
+  <%= yield %>
 </div>
 
   </body>

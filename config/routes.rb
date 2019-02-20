@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "/orders/result" => "orders#modal"
 
   root :to => 'items#top'
   devise_for :admins, controllers: {
@@ -14,28 +15,27 @@ devise_for :users, controllers: {
 
   # users関連
   get '/users/delete' => 'users#cancel'
+
   patch '/users/delete' => 'users#flg_update'
 
   resources :users, only: [:show, :edit, :update] do
     resources :shipments, only: [:create, :index, :edit, :update, :destroy]
-  end
+
+
 
   # shipments関連
-  
+
 
   # delete "/users/:user_id/shipments/:id" => "shipments#destroy", as: "delete_shipment"
 
   # orders関連
-  get '/orders/:id/result' => 'orders#result'
+  resources :orders, only: [:new, :create, :index, :show]
+  get '/orders/:id/result' => 'orders#result', as: "result_order"
   patch '/orders/:id' => 'orders#flg_update'
   patch '/orders/line_items/:id' => 'orders#item_flg_update'
-  resources :orders, only: [:new, :create, :index, :show]
 
   # items関連
   resources :items, only: [:show]
-
-  # artists関連
-  resources :artists, only: [:new, :create, :index, :edit, :update, :destroy]
 
   # carts関連
   resources :carts, only: [:create, :index, :update, :destroy]
@@ -51,6 +51,7 @@ devise_for :users, controllers: {
     patch 'admin/orders/line_items/:id' => 'orders#item_flg_update'
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     patch '/admin/items/:id/flg_update' => 'items#flg_update'
+    resources :artists, only: [:new, :create, :index, :edit, :update, :destroy]
     resources :labels, only: [:new, :create, :edit, :update, :index, :destroy]
     resources :genres, only: [:new, :create, :edit, :update, :index, :destroy]
   end

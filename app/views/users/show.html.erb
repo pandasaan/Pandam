@@ -17,9 +17,5 @@
 	</div>
 </div>
 <div>
-	<% @order.each do |order| %>
-	<%= attachment_image_tag order.oder_item.item.image, :image, :fill, 100,100,format: 'jpg' %>
-	<%= order.created_at %>
-	<%=link_to "商品詳細", users_path(users.id) %>
-		<% end %>
+
 </div>
