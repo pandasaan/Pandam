@@ -1,15 +1,14 @@
-
 退会ページ
 <div style="padding: 10px; border: 1px dotted; #333333;border-radius: 10px; margin: 10px;">
-	<div>
-		本当に<br>
-		退会しますか？
-	</div>
+本当に<br>
+退会しますか？
+
 	<span style="background:#FFFFFF; padding:0px; border-radius: 10px; border: 2px dotted #33CC33;">
-	    <%= link_to "退会せずにマイページに戻る", users_path(@user) %>
+	    <%= link_to "退会せずにマイページに戻る", user_path(current_user.id) %>
 	</span>
 
-	<span style="background:#FFFFFF; padding:0px; border-radius: 10px; border: 2px dotted #9370DB;">
+	<%= link_to  users_delete_path(current_user), method: :delete do%>
 		退会する
+		<%end%>
 	</span>
 </div>
