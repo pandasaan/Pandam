@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to :artist
   belongs_to :genre
   belongs_to :label
-  has_many :discs, dependent: :destroy
+  has_many :discs, dependent: :destroy, inverse_of: :item
   has_many :tunes, through: :discs
   has_many :carts
   has_many :users, through: :carts

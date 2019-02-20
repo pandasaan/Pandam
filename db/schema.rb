@@ -13,12 +13,12 @@
 ActiveRecord::Schema.define(version: 2019_02_18_110526) do
 
   create_table "admins", force: :cascade do |t|
-    t.string "email"
-    t.string "encrypted_password"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2019_02_18_110526) do
   end
 
   create_table "artists", force: :cascade do |t|
-    t.string "artist_name", default: ""
+    t.string "artist_name", default: "", null: false
     t.text "comment", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -53,21 +53,21 @@ ActiveRecord::Schema.define(version: 2019_02_18_110526) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "genre"
+    t.string "genre", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["genre"], name: "index_genres_on_genre"
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "title"
-    t.integer "artist_id"
+    t.string "title", default: "", null: false
+    t.integer "artist_id", null: false
     t.string "image_id"
-    t.integer "genre_id"
-    t.integer "label_id"
-    t.integer "price"
-    t.integer "stock"
-    t.integer "item_is_deleted", default: 0
+    t.integer "genre_id", null: false
+    t.integer "label_id", null: false
+    t.integer "price", null: false
+    t.integer "stock", null: false
+    t.integer "item_is_deleted", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_items_on_title"
@@ -103,11 +103,11 @@ ActiveRecord::Schema.define(version: 2019_02_18_110526) do
   end
 
   create_table "shipments", force: :cascade do |t|
-    t.string "shipment_name"
-    t.string "shipment_name_kana"
-    t.string "shipment_postal_code"
-    t.string "shipment_address"
-    t.integer "user_id"
+    t.string "shipment_name", default: "", null: false
+    t.string "shipment_name_kana", default: "", null: false
+    t.string "shipment_postal_code", default: "", null: false
+    t.string "shipment_address", default: "", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shipment_address"], name: "index_shipments_on_shipment_address"
@@ -116,30 +116,30 @@ ActiveRecord::Schema.define(version: 2019_02_18_110526) do
   end
 
   create_table "tunes", force: :cascade do |t|
-    t.string "tune_name"
-    t.integer "disc_id"
-    t.integer "index"
+    t.string "tune_name", default: "", null: false
+    t.integer "disc_id", null: false
+    t.integer "index", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "encrypted_password"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "name"
-    t.string "name_kana"
-    t.string "postal_code"
-    t.string "address"
-    t.string "tell"
-    t.integer "user_is_deleted"
+    t.string "name", default: "", null: false
+    t.string "name_kana", default: "", null: false
+    t.string "postal_code", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "tell", default: "", null: false
+    t.integer "user_is_deleted", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
