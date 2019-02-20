@@ -26,7 +26,7 @@ class Admin::ArtistsController < ApplicationController
     artist = Artist.find(params[:id])
     if artist.update(artist_params)
       flash[:notice] = "編集が完了しました！"
-      redirect_to artists_path
+      redirect_to admin_artists_path
     else
       render "edit"
     end
@@ -36,7 +36,7 @@ class Admin::ArtistsController < ApplicationController
     artist = Artist.find(params[:id])
     artist.destroy
     flash[:notice] = "削除しました"
-    redirect_to artists_path
+    redirect_to admin_artists_path
   end
 
   private
