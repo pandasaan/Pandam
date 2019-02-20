@@ -1,48 +1,46 @@
-<div class= "container">
-<h1>アイテム一覧</h1>
-
-<%= link_to "new", new_admin_item_path(@item), class: "pull-left" %>
-<%= link_to "Top", admin_top_path, class: "pull-right" %>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>
-        ジャケット
-      </th>
-      <th>
-        タイトル
-      </th>
-      <th>
-        値段
-      </th>
-      <th>
-        アーティスト
-      </th>
-      <th></th>
-    </tr>
-  </thead>
-<% @items.each do |item| %>
-  <tbody>
-    <tr>
-      <td>
-        <%= attachment_image_tag item, :image, fallback: "assets/no_image.jpg", size: "50x50", format: 'jpeg' %>
-      </td>
-      <td>
-        <%= item.title %>
-      </td>
-      <td>
-        <%= item.price %>
-      </td>
-      <td>
-        <!-- 要修正 -->
-        <p>アーティスト名</p>
-      </td>
-      <td>
-        <%= link_to "詳細", admin_item_path(item.id) %>
-      </td>
-    </tr>
-  </tbody>
-<% end %>
-</table>
+<div class= "container admin">
+  <h1>アイテム一覧</h1>
+  <%= link_to "new", new_admin_item_path(@item), class: "pull-left" %>
+  <%= link_to "Top", admin_top_path, class: "pull-right" %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          ジャケット
+        </th>
+        <th>
+          タイトル
+        </th>
+        <th>
+          値段
+        </th>
+        <th>
+          アーティスト
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+  <% @items.each do |item| %>
+    <tbody>
+      <tr>
+        <td>
+          <%= attachment_image_tag item, :image, fallback: "assets/no_image.jpg", size: "50x50", format: 'jpeg' %>
+        </td>
+        <td>
+          <%= item.title %>
+        </td>
+        <td>
+          <%= item.price %>
+        </td>
+        <td>
+          <!-- 要修正 -->
+          <p>アーティスト名</p>
+        </td>
+        <td>
+          <%= link_to "詳細", admin_item_path(item.id) %>
+        </td>
+      </tr>
+    </tbody>
+  <% end %>
+  </table>
 </div>

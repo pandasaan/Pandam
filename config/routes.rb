@@ -30,9 +30,6 @@ devise_for :users, controllers: {
   # items関連
   resources :items, only: [:show]
 
-  # artists関連
-  resources :artists, only: [:new, :create, :index, :edit, :update, :destroy]
-
   # carts関連
   resources :carts, only: [:create, :index, :update, :destroy]
 
@@ -47,6 +44,7 @@ devise_for :users, controllers: {
     patch 'admin/orders/line_items/:id' => 'orders#item_flg_update'
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     patch '/admin/items/:id/flg_update' => 'items#flg_update'
+    resources :artists, only: [:new, :create, :index, :edit, :update, :destroy]
     resources :labels, only: [:new, :create, :edit, :update, :index, :destroy]
     resources :genres, only: [:new, :create, :edit, :update, :index, :destroy]
   end

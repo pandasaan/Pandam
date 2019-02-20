@@ -1,8 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-10">
-      <h2>アーティスト編集</h2>
-      <%= form_for(@artist) do |f| %>
+      <h2>アーティスト新規作成</h2>
+      <%= form_for(@artist, url: admin_artists_path, method: :post) do |f| %>
       <div class="form-group">
         <label for="artist">アーティスト名</label>
         <%= f.text_field :artist_name, id: "artist", class: "form-control" %>
@@ -11,10 +9,7 @@
         <label for="comment">一言コメント</label>
         <%= f.text_area :comment, id: "comment", class: "form-control" %>
       </div>
-      <%= f.submit "Update", class: "btn btn-info" %>
+      <%= f.submit "Create",class: "btn btn-success" %>
       <% end %>
-      <%= link_to "Back", artists_path %><br>
-      <%= link_to "Delete", artist_path, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}, method: :delete %>
-    </div>
-  </div>
+      <%= link_to "Back", admin_artists_path %><br>
 </div>
