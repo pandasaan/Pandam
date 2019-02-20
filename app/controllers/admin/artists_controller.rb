@@ -1,5 +1,5 @@
-class ArtistsController < ApplicationController
-  before_action :authenticate_admin!
+class Admin::ArtistsController < ApplicationController
+  # before_action :authenticate_admin!
   def new
     @artist = Artist.new
   end
@@ -8,7 +8,7 @@ class ArtistsController < ApplicationController
     artist = Artist.new(artist_params)
     if artist.save
       flash[:notice] = "アーティストを新規登録しました！"
-      redirect_to artists_path
+      redirect_to admin_artists_path
     else
       render "new"
     end

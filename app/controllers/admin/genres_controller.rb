@@ -35,7 +35,7 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.find(params[:id])
     @genre.destroy
     flash[:notice] = "削除しました"
-    redirect_to admin_genres_path 
+    redirect_to admin_genres_path
   end
 
   private

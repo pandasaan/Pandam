@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <h2>アーティスト新規作成</h2>
+      <%= form_for(@artist, url: admin_artists_path, method: :post) do |f| %>
+      <div class="form-group">
+        <label for="artist">アーティスト名</label>
+        <%= f.text_field :artist_name, id: "artist", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="comment">一言コメント</label>
+        <%= f.text_area :comment, id: "comment", class: "form-control" %>
+      </div>
+      <%= f.submit "Create" %>
+      <% end %>
+    </div>
+  </div>
+</div>
