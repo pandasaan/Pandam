@@ -1,5 +1,7 @@
 <div class="modal-dialog">
   <div class="modal-content">
+
+  	<h1>確認ページ</h1>
     <table class="table table-hover">
         <thead>
           <tr>
@@ -15,20 +17,16 @@
             <td>画像</td>
             <td>￥<%= cart.item.price %></td>
             <td><%= cart.amount %>枚</td>
-            <td><%= cart.item.price * cart.amount %></td>
+            <td>￥<%= cart.item.price * cart.amount %></td>
           </tr>
         </tbody>
         <% end %>
     </table>
-         <div>合計</div>
-         <div>
-         	<%= @total_price %>
-         </div>
+         <h4>合計</h4>
+         <h3>￥<%= @total_price %></h3>
          <div>
          	<%= form_tag orders_path, method: :post do %>
          		<%= hidden_field_tag :shipment_id, @ship.id %>
-        		<%= @ship.shipment_name %>
-        	購入確定
         	<%= submit_tag "購入", class: "btn btn-lg btn-primary" %>
         	<% end %>
       	 </div>
