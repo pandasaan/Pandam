@@ -1,29 +1,25 @@
-<div class="container">
-  <div class="row">
-    <div class="col-10">
-      <%= link_to "TOP", admin_top_path, class: "btn btn-primary" %>
-      <%= link_to "New Label", new_admin_label_path, class: "btn btn-warning" %>
-      <h2>レーベル一覧</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>レーベル名</th>
-            <th></th>
-          </tr>
-        </thead>
-         <% @labels.each do |label| %>
-          <tbody>
-            <tr>
-              <td>
-                <%= label.label %>
-              </td>
-              <td>
-                <%= link_to "Edit", edit_admin_label_path(label.id) %>
-              </td>
-            </tr>
-          </tbody>
-         <% end %>
-      </table>
-    </div>
-  </div>
+<div class="container admin">
+  <h2>レーベル一覧</h2>
+  <%= link_to "TOP", admin_top_path, class: "btn btn-primary" %>
+  <%= link_to "New Label", new_admin_label_path, class: "btn btn-warning" %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>レーベル名</th>
+        <th></th>
+      </tr>
+    </thead>
+     <% @labels.each do |label| %>
+      <tbody>
+        <tr>
+          <td>
+            <%= label.label %>
+          </td>
+          <td>
+            <%= link_to "Edit", edit_admin_label_path(label.id) %>
+          </td>
+        </tr>
+      </tbody>
+     <% end %>
+  </table>
 </div>

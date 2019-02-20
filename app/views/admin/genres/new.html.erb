@@ -1,14 +1,13 @@
 <div class="container">
-  <div class="row">
-    <div class="col-10">
+
       <h2>ジャンル新規作成</h2>
       <%= form_for(@genre, url: admin_genres_path, method: :post) do |f| %>
         <div class="form-group">
           <label for="genre">ジャンル名</label>
           <%= f.text_field :genre, id: "genre", class: "form-control" %>
         </div>
-        <%= f.submit "Create" %>
+        <%= f.submit "Create", class: "btn btn-success" %>
       <% end %>
-    </div>
-  </div>
+      <%= link_to "Back", admin_genres_path %><br>
+
 </div>
