@@ -8,28 +8,27 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>商品情報</th>
+          <th>購入者名</th>
+          <th>送付先住所</th>
           <th>値段</th>
           <th>数量</th>
           <th>小計</th>
-        </tr>
+          <th>合計</th>
+       </tr>
       </thead>
       <tbody>
-      <% @carts.each do |cart| %>
+      <% @orders.each do |order| %>
         <tr>
-          <td>画像</td>
-          <td>￥<%= cart.item.price %></td>
-          <td><%= cart.amount %>枚</td>
-          <td><%= @subtotal = cart.item.price * cart.amount %></td>
+          <td><%= order.order.user.name %></td>
+          <td><%= order.order.order_address %></td>
+          <td>￥<%= price = order.order_price %></td>
+          <td><%= amount = order.amount %>枚</td>
+          <td><%= price * amount %></td>
+          <td>￥<%= order.order.total_price %></td>
         </tr>
       </tbody>
     <% end %>
     </table>
-       <div>合計</div>
-       <div>
-       	<%= @total %>
-
-       </div>
   </div>
 </div>
 </div>

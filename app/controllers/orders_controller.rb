@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
   end
 
   def result
-    @orders = Order.find(params[:id])
+    @orders = OrderItem.where(order_id: params[:id])
   end
 
   def flg_update
