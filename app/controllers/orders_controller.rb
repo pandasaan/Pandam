@@ -42,23 +42,27 @@ class OrdersController < ApplicationController
   end
 
   def result
+    @orders = Order.where(id: params[:id])
     @orderitems = OrderItem.where(order_id: params[:id])
   end
 
   def show
-    @orderitems = OrderItem.where(order_id: 15)
+    @orders = Order.where(id: params[:id])
+    @orderitems = OrderItem.where(order_id: params[:id])
   end
 
   def index
-    @orders = Order.where(user_id: current_user.id)
+    @orders = Order.where(user_id: current_user.id).order(id: "DESC")
   end
 
-
-
   def flg_update
+    order = Order.new(status: :nomal)
+    order.save
+    redirect_to order_path()
   end
 
   def item_flg_update
+
   end
 
 

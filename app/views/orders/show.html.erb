@@ -5,19 +5,26 @@
   </div>
 
   <div class="col-xs-11">
-  <h1>購入結果</h1>
-    <% @orderitems.each do |orderitem| %>
+	<h1>購入詳細</h1>
+
+    <% @orders.each do |order| %>
 　　    <div class="well">
-          <h4>購入日時：<%= orderitem.order.created_at.strftime('%Y/%m/%d %H:%M') %></h4>
+          <h4>購入日時：<%= order.created_at.strftime('%Y/%m/%d %H:%M') %></h4>
+        </div>
 
         <div class="well">
-                <p>宛名：<%= orderitem.order.order_name %></p>
-                <p>郵便番号：<%= orderitem.order.order_postal_code %></p>
-                <p>送付先住所：<%= orderitem.order.order_address %></p>
+                <p>宛名：<%= order.order_name %></p>
+                <p>郵便番号：<%= order.order_postal_code %></p>
+                <p>送付先住所：<%= order.order_address %></p>
         </div>
-        <h2>合計</h2>
-        <h3>￥<%= orderitem.order.total_price %></h3>
 
+        <div>
+            <h2>合計</h2>
+            <h3>￥<%= order.total_price %></h3>
+        </div>
+    <% end %>
+
+    <% @orderitems.each do |orderitem| %>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -32,7 +39,7 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= orderitem.item_id %></td>
+          <td><%= attachment_image_tag orderitem.item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
           <td><%= orderitem.item.title %></td>
           <td>未</td>
           <td>￥<%= price = orderitem.order_price %></td>
@@ -43,6 +50,7 @@
     <% end %>
       </tbody>
     </table>
+
   </div>
 
   <div class="btn"><%= link_to "Topへ戻る", root_path %></div>
