@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>購入詳細</h2>
+  <div class="dlv_status">
+    <!-- 配達状況変更欄 -->
+  </div>
+  <div class="cancell_status">
+    <!-- キャンセル状況変更欄 -->
+  </div>
+
+  <div class="order-info">
+    <div class="orderer-name">
+      <p>注文者 : <%= @order.user.name %></p>
+    </div>
+    <div class="order-date">
+      <p>購入日 : <%= @order.created_at.strftime('%Y/%m/%d') %></p>
+    </div>
+    <div class="order-detail">
+      <p>購入詳細</p>
+      <% @order.order_items.each do |order_item| %>
+        <ul>
+          <li>タイトル : <%= order_item.item.title %>
+            <ol>
+              <li>単価 : <%= order_item.order_price %></li>
+              <li>購入枚数 : <%= order_item.amount %></li>
+            </ol>
+          </li>
+          <li>キャンセル情報 : <%= order_item.cancell_status %></li>
+        </ul>
+      <% end %>
+    </div>
+    <div class="order-total">
+      <p>購入総計 : ¥<%= @order.total_price %></p>
+    </div>
+  </div>
+</div>
