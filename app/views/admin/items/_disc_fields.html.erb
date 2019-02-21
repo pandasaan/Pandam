@@ -1,16 +1,18 @@
 <div class="nested-fields well well-compact">
-  <div class="form-group">
-    <%= f.label :disc_name %>
-    <%= f.number_field :disc_name %><br>
-    <%= link_to_remove_association "remove disc", f %>
+
+  <div class="field">
+    <%= f.label :disc %>
+    <%= f.text_field :disc_name %><br>
+
   </div>
+    <%= link_to_remove_association "remove disc", f %>
 
   <div class="tunes">
     <%= f.fields_for :tunes do |tune| %>
-      <%= render 'tune_fields', f: tune %>
+      <%= render 'tune_fields', :f => tune %>
     <% end %>
     <div class="links">
-    <%= link_to_add_association "add tune", f, :tunes %>
+      <%= link_to_add_association "add tune", f, :tunes %>
     </div>
   </div>
 </div>

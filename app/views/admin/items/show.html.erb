@@ -1,0 +1,66 @@
+<div class= "container">
+<h1>商品詳細ページ</h1>
+
+<div class="row">
+<table class="table">
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th>ジャケット画像</th>
+      <th>タイトル</th>
+      <th>アーティスト</th>
+      <th>ジャンル</th>
+      <th>レーベル</th>
+      <th>値段</th>
+      <th>在庫数</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= attachment_image_tag @item, :image, fallback: "assets/no_image.jpg", size: "50x50", format: 'jpeg' %></td>
+      <td><%= @item.title %></td>
+      <td>
+        <p><%= @item.artist.artist_name %></p>
+      </td>
+      <td>
+        <p><%= @item.genre.genre %></p>
+      </td>
+      <td>
+        <p><%= @item.label.label %></p>
+      </td>
+      <td><%= @item.price %></td>
+      <td><%= @item.stock %></td>
+    </tr>
+
+   </tr>
+</tbody>
+
+  <thead>
+    <tr>
+      <th>ディスク名</th>
+      <th>曲名</th>
+    </tr>
+  </thead>
+
+  <tbody>
+        <tr>
+    <td>
+    <% @item.discs.each do |disc| %>
+    <p><%= disc.disc_name %></p>
+    <% end %>
+    </td>
+    <td>
+    <% @item.tunes.each do |tune| %>
+    <p><%= tune.tune_name %></p>
+    <% end %>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+
+<%= link_to "Back", admin_items_path(@item), class: "pull-left" %>
+<%= link_to "Edit", edit_admin_item_path(@item.id), class: "btn-sm btn-success" %>
+<%= link_to "Delete", admin_item_path(@item.id), class: "btn btn-danger",  data: {confirm: "本当に削除しますか？"}, method: :delete %>

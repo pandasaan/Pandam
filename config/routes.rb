@@ -49,7 +49,7 @@ devise_for :users, controllers: {
     resources :orders, only: [:show, :index]
     patch '/admin/orders/:id' => 'orders#flg_update'
     patch 'admin/orders/line_items/:id' => 'orders#item_flg_update'
-    resources :items, only: [:new, :create, :index, :show, :edit, :update]
+    resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     patch '/admin/items/:id/flg_update' => 'items#flg_update'
     resources :artists, only: [:new, :create, :index, :edit, :update, :destroy]
     resources :labels, only: [:new, :create, :edit, :update, :index, :destroy]
