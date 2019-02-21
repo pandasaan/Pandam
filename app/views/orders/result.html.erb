@@ -1,38 +1,51 @@
 <div class="container">
 <div class="row">
+
   <div class="col-xs-1">
   </div>
 
   <div class="col-xs-11">
-	<h2>購入結果</h2>
+	<h1>購入結果</h1>
+    <% @orderitems.each do |orderitem| %>
+　　    <div class="well">
+          <h4>購入日時：<%= orderitem.order.created_at.strftime('%Y/%m/%d %H:%M') %></h4>
+          <h3><%= orderitem.order.user.name %>様、ご購入ありがとうございます！！</h3></div>
+
+        <div class="well">
+                <p>宛名：<%= orderitem.order.order_name %></p>
+                <p>郵便番号：<%= orderitem.order.order_postal_code %></p>
+                <p>送付先住所：<%= orderitem.order.order_address %></p>
+        </div>
+        <h2>合計</h2>
+        <h3>￥<%= orderitem.order.total_price %></h3>
+
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>購入者名</th>
-          <th>送付先名前</th>
-          <th>送付先郵便番号</th>
-          <th>送付先住所</th>
-          <th>値段</th>
+          <th>画像</th>
+          <th>シングル・アルバム名</th>
+          <th>アーティスト</th>
+          <th>価格</th>
           <th>数量</th>
           <th>小計</th>
-          <th>合計</th>
+          <th></th>
        </tr>
       </thead>
       <tbody>
-      <% @orders.each do |order| %>
         <tr>
-          <td><%= order.order.user.name %></td>
-          <td><%= order.order.order_name %></td>
-          <td><%= order.order.order_postal_code %></td>
-          <td><%= order.order.order_address %></td>
-          <td>￥<%= price = order.order_price %></td>
-          <td><%= amount = order.amount %>枚</td>
+          <td><%= orderitem.item_id %></td>
+          <td><%= orderitem.item.title %></td>
+          <td>未</td>
+          <td>￥<%= price = orderitem.order_price %></td>
+          <td><%= amount = orderitem.amount %>枚</td>
           <td><%= price * amount %></td>
-          <td>￥<%= order.order.total_price %></td>
+          <td><%= link_to item_path(id: orderitem.item.id) do %>商品詳細<% end %></td>
         </tr>
-      </tbody>
     <% end %>
+      </tbody>
     </table>
   </div>
+
+  <div class="btn"><%= link_to "Topへ戻る", root_path %></div>
 </div>
 </div>
