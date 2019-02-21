@@ -8,8 +8,11 @@ class Admin::ItemsController < ApplicationController
     @disc = @item.discs.build
     @tune = @disc.tunes.build
     @item.save
-    redirect_to admin_items_path
-  end
+    binding.pry
+       redirect_to admin_items_path
+    else
+       render :new
+    end
 
   def index
     # 一覧は複数形の方がいいので@item → @itemsに変更しました
@@ -18,6 +21,8 @@ class Admin::ItemsController < ApplicationController
 
   def show
   	@item = Item.find(params[:id])
+    @disc = @item.discs.find(params[:id])
+    @tune = @disc.tunes.find(params[:id])
   end
 
   def edit

@@ -1,0 +1,50 @@
+<div class= "container">
+<h1>商品詳細ページ</h1>
+
+<div class="row">
+<table class="table">
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th>ジャケット画像</th>
+      <th>タイトル</th>
+      <th>アーティスト</th>
+      <th>ジャンル</th>
+      <th>レーベル</th>
+      <th>ディスク名</th>
+      <th>曲名</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= attachment_image_tag @item, :image, fallback: "assets/no_image.jpg", size: "50x50", format: 'jpeg' %></td>
+      <td><%= @item.title %></td>
+      <td><%= @item.price %></td>
+      <td>
+        <p><%= @item.artist_id %></p>
+      </td>
+      <td>
+        <p><%= @item.genre_id %></p>
+      </td>
+      <td>
+        <p><%= @item.label_id %></p>
+      </td>
+        <tr>
+    <td>
+    <% @disc.each do |disc| %>
+    <p><%= disc.disc_name %></p>
+    <% end %>
+    </td>
+    <td>
+    <% @tune.each do |tune| %>
+    <p><%= tune.tune_name %></p>
+    <% end %>
+    </td>
+  </tr>
+   </tr>
+</tbody>
+</table>
+</div>
+
+<%= link_to "Back", admin_items_path(@item), class: "pull-left" %>

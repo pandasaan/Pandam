@@ -1,4 +1,4 @@
-<%= form_for([:admin, @item]) do |f| %>
+  <%= form_for([:admin, @item]) do |f| %>
   <h4>ジャケット画像</h4>
   <!-- <label class="control-label sr-only" for="inputEmail">ItemImage</label> -->
   <%= f.attachment_field :image, placeholder: "ジャケット画像", class: "item-image" %>
@@ -23,11 +23,11 @@
   <h3>ディスク名</h3>
   <div id="discs">
     <%= f.fields_for :discs do |disc| %>
-      <%= render 'disc_fields', f: disc %>
+      <%= render 'disc_fields', f: :disc %>
     <% end %>
     <div id="links">
     <%= link_to_add_association 'add discs',f, :discs %>
     </div>
   </div>
-  <p><%= f.submit "New", class: "btn btn-primary" %></p>
+  <p><%= f.submit "編集", class: "btn btn-primary" %></p>
   <% end %>
