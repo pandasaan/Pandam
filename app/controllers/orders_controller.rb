@@ -41,22 +41,35 @@ class OrdersController < ApplicationController
     flash[:notice] = "ご購入ありがとうございます！"
   end
 
-  def show
+  def result
+    @orders = Order.where(id: params[:id])
+    @orderitems = OrderItem.where(order_id: params[:id])
+  end
 
+  def show
+    @orders = Order.where(id: params[:id])
+    @orderitems = OrderItem.where(order_id: params[:id])
   end
 
   def index
-  end
-
-  def result
-    @orders = OrderItem.where(order_id: params[:id])
+    @orders = Order.where(user_id: current_user.id).order(id: "DESC")
   end
 
   def flg_update
+    order = Order.find(params[:id])
+    order.update(order_params)
+    redirect_to root_path
   end
 
   def item_flg_update
+
   end
+
+    private
+
+    def order_params
+      params.require(:order).permit(:cancell_status)
+    end
 
 
 end

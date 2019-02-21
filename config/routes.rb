@@ -31,7 +31,7 @@ devise_for :users, controllers: {
   # orders関連
   resources :orders, only: [:new, :create, :index, :show]
   get '/orders/:id/result' => 'orders#result', as: "result_order"
-  patch '/orders/:id' => 'orders#flg_update'
+  put "order/:id/show" => 'orders#flg_update', as:"flg_update_order"
   patch '/orders/line_items/:id' => 'orders#item_flg_update'
 
   # items関連

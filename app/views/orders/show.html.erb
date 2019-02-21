@@ -1,21 +1,63 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div class="container">
+<div class="row">
 
-  <p><% @ships.each do |ship| %></p>
-<%= radio_button '' ship.id %>
-<%= ship.id %>
-<%= ship.user_id %>
-<%= ship.shipment_name %>
-<%= ship.shipment_name_kana %>
-<%= ship.shipment_postal_code %>
-<%= ship.shipment_address %>
-  <% end %>
+  <div class="col-xs-1">
+  </div>
+
+  <div class="col-xs-11">
+	<h1>購入詳細</h1>
+
+    <% @orders.each do |order| %>
+　　    <div class="well">
+          <h4>購入日時：<%= order.created_at.strftime('%Y/%m/%d %H:%M') %></h4>
+          <h4>配送ステータス：<%= order.dlv_status %></h4>
+          <h4>
+            キャンセルステータス：<%= order.cancell_status %>
+            <%= link_to "キャンセルする", flg_update_order_path(order.id, params: {order: {cancell_status: "user_cancell"}}), method: :put %>
+          </h4>
+        </div>
+
+        <div class="well">
+                <p>宛名：<%= order.order_name %></p>
+                <p>郵便番号：<%= order.order_postal_code %></p>
+                <p>送付先住所：<%= order.order_address %></p>
+        </div>
+
+        <div>
+            <h2>合計</h2>
+            <h3>￥<%= order.total_price %></h3>
+        </div>
+    <% end %>
+
+    <% @orderitems.each do |orderitem| %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>画像</th>
+          <th>シングル・アルバム名</th>
+          <th>アーティスト</th>
+          <th>価格</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+       </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= attachment_image_tag orderitem.item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+          <td><%= orderitem.item.title %></td>
+          <td>未</td>
+          <td>￥<%= price = orderitem.order_price %></td>
+          <td><%= amount = orderitem.amount %>枚</td>
+          <td><%= price * amount %></td>
+          <td><%= link_to item_path(id: orderitem.item.id) do %>商品詳細<% end %></td>
+        </tr>
+    <% end %>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="btn"><%= link_to "Topへ戻る", root_path %></div>
 </div>
-<%= f.label ship.id do %>
-<%= radio_button_tag '送付先1'  %>
-  <% end %>
-
-  <%= form_tag ("/orders/result"), method: "get", remote: true do %>
-  <%= select_tag :shipment, options_from_collection_for_select(@ships, :id, :shipment_name) %>
-<%= submit_tag "送信先" %>
-<% end %>
+</div>
