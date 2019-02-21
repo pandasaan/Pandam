@@ -15,6 +15,13 @@ class UsersController < ApplicationController
   end
 
   def cancel
+
+  end
+
+  def leave
+    user =User.find(current_user.id)
+    user.destroy
+    redirect_to root_path
   end
 
   def flg_update

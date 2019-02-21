@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   has_many :tunes, through: :discs
   has_many :carts
   has_many :users, through: :carts
-  has_many :oder_items
+  has_many :order_items
 
   accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
 

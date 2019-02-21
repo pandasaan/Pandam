@@ -1,2 +1,33 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1">
+    </div>
+
+
+
+    <div class="col-xs-11">
+  	  <h2>レジページ</h2>
+        <h3>送付先一覧</h3>
+            <div>
+              <%= form_tag ("/orders/result"), method: "get", remote: true do %>
+                <%= select_tag :shipment_id, options_from_collection_for_select(@ships, :id, :shipment_name) %>
+                <%= submit_tag "送信先", class: "btn btn-lg btn-primary" %>
+              <% end %>
+            </div>
+
+          <% @ships.each do |ship| %>
+            <div class="well">
+                <p>送付先ID：<%= ship.id %></p>
+                <p>ユーザーID：<%= ship.user_id %></p>
+                <p>宛名：<%= ship.shipment_name %></p>
+                <p>宛名（カナ）<%= ship.shipment_name_kana %></p>
+                <p>郵便番号：<%= ship.shipment_postal_code %></p>
+                <p>送付先住所：<%= ship.shipment_address %></p>
+            </div>
+          <% end %>
+
+  </div>
+</div>
+
+
+<div id="order-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
