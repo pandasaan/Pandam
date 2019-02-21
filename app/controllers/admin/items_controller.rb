@@ -1,12 +1,12 @@
 class Admin::ItemsController < ApplicationController
   def new
     @item = Item.new
+    @disc = @item.discs.build
+    @tune = @disc.tunes.build
   end
 
   def create
     @item = Item.new(item_params)
-    @disc = @item.discs.build
-    @tune = @disc.tunes.build
     @item.save
     redirect_to admin_items_path
   end
@@ -31,6 +31,6 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :title, :price, :stock, :artist_id, :label_id, :genre_id, disc_attributes: [:id, :disc_name], tune_attributes: [:id, :tune_name])
+    params.require(:item).permit(:image, :title, :price, :stock, :artist_id, :label_id, :genre_id, discs_attributes: [:disc_name, :_destroy, tunes_attributes: [:tune_name, :_destroy]])
   end
 end
