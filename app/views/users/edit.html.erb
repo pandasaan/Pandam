@@ -1,5 +1,5 @@
 <h1>User info</h1>
-<%= form_for(@users) do |f| %>
+<%= form_for([:admin, @users]) do |f| %>
 
     <h4>名前（姓、名）</h4>
     <%= f.text_field :name %>

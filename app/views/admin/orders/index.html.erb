@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>ユーザー購入状況一覧</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ユーザー</th>
+        <th>購入日時</th>
+        <th>時刻</th>
+        <th>購入詳細</th>
+        <th>手配状況</th>
+        <th>キャンセル状況</th>
+        <th></th>
+        <th>対応日時</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.user.name %></td>
+        <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= order.created_at.strftime('%H:%M') %></td>
+        <td>
+          <% order.order_items.each do |order_item| %>
+            <%= order_item.item.title %> <%= order_item.cancell_status %><br>
+          <% end %>
+        </td>
+        <td><%= order.dlv_status %></td>
+        <td><%= order.cancell_status %></td>
+        <td>
+          <%= link_to "Show", admin_order_path(order.id) %>
+        </td>
+        <td><%= order.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
