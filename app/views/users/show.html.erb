@@ -11,6 +11,7 @@
 			</ul>
 			<%=link_to "ユーザー編集", edit_user_path %>
 			| <%=link_to "送付先編集",user_shipments_path(current_user.id) %>
+			| <%= link_to "退会", users_delete_path(current_user.id)  %>
 		</div>
 </div>
 
