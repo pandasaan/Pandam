@@ -6,16 +6,24 @@
 				<li>郵便番号　　　：<%= @user.postal_code %></li>
 				<li>住所　　　　　：<%= @user.address %></li>
 				<li>メールアドレス：<%= @user.email %></li>
-			</ul>
-		</div>
-		<div>
-			<ul style="list-style-type:circle;">
 				<li>名前（カナ)   ：<%= @user.name_kana %></li>
 				<li>電話番号　　　：<%= @user.tell %></li>
 			</ul>
+			<%=link_to "ユーザー編集", edit_user_path %>
+			| <%=link_to "送付先編集",user_shipments_path(current_user.id) %>
 		</div>
-	</div>
 </div>
-<div>
 
+<div>
+	<% current_user.orders.each do |order| %>
+	<%= link_to item_path do %>
+	<% order.order_items.each do |item| %>
+	<%= attachment_image_tag item.item, :image, :fill, 100,100,format: 'jpg' %>
+	<% end %>
+<% end %>
+<%= link_to order_path do %>
+	<%= order.created_at %>
+<% end %>
+<% end %>
+</div>
 </div>
