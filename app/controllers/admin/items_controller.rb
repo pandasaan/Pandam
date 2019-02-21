@@ -7,12 +7,12 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
-    binding.pry
+    if @item.save
        redirect_to admin_items_path
     else
        render :new
     end
+  end
 
   def index
     # 一覧は複数形の方がいいので@item → @itemsに変更しました
@@ -21,17 +21,28 @@ class Admin::ItemsController < ApplicationController
 
   def show
   	@item = Item.find(params[:id])
-    @disc = @item.discs.find(params[:id])
-    @tune = @disc.tunes.find(params[:id])
   end
 
   def edit
+    @item =Item.find(params[:id])
   end
 
   def update
+    item = Item.find(params[:id])
+    if item.update(item_params)
+      flash[:notice] = "編集が完了しました！"
+      redirect_to admin_items_path
+    else
+      render "edit"
+    end
   end
 
-
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    flash[:notice] = "削除しました"
+    redirect_to admin_item_path
+  end
 
   private
 
