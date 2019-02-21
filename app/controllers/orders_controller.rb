@@ -56,14 +56,20 @@ class OrdersController < ApplicationController
   end
 
   def flg_update
-    order = Order.new(status: :nomal)
-    order.save
-    redirect_to order_path()
+    order = Order.find(params[:id])
+    order.update(order_params)
+    redirect_to root_path
   end
 
   def item_flg_update
 
   end
+
+    private
+
+    def order_params
+      params.require(:order).permit(:cancell_status)
+    end
 
 
 end
