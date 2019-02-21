@@ -4,7 +4,7 @@
 <div class="col-md-6">
 	<h1>新規投稿</h1>
 
-	<%= form_for(@shipments) do |f| %>
+	<%= form_for @shipments,url: user_shipments_path(current_user.id) do |f| %>
 
 	<h4>名前（姓、名）</h4>
 	<%= f.text_field :shipment_name %>
@@ -29,7 +29,7 @@
 <div class="col-md-6">
 	<h1>送付先一覧</h1>
 	<% @shipment.each do |shipment| %>
-	    <%= link_to edit_shipment_path(shipment.id) do %>
+	    <%= link_to  edit_user_shipment_path(current_user.id,shipment.id) do %>
 	    <h6>名前（姓、名）</h6>
 	    <%= shipment.shipment_name %>
 	    <h6>名前(カナ）</h6>
