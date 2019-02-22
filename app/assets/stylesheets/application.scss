@@ -21,16 +21,16 @@ body {
 }
 
 .item img {
-    overflow: hidden;   /*拡大時にはみ出た部分を隠す*/
+    overflow: hidden;
     float: left;
     margin: 10px;
     display: block;
-    transition-duration: 0.3s;  /*変化に掛かる時間*/
+    transition-duration: 0.3s;
 }
 
 .item img:hover {
-    transform: scale(1.1);  /*画像の拡大率*/
-    transition-duration: 0.3s;  /*変化に掛かる時間*/
+    transform: scale(1.1);
+    transition-duration: 0.3s;
 }
 
 .navbar-inverse {
