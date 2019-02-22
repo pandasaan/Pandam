@@ -16,6 +16,23 @@
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import "bootstrap";            /*ここを追加*/
 
+body {
+	background-color: #151515;
+}
+
+.item img {
+    overflow: hidden;   /*拡大時にはみ出た部分を隠す*/
+    float: left;
+    margin: 10px;
+    display: block;
+    transition-duration: 0.3s;  /*変化に掛かる時間*/
+}
+
+.item img:hover {
+    transform: scale(1.1);  /*画像の拡大率*/
+    transition-duration: 0.3s;  /*変化に掛かる時間*/
+}
+
 .navbar-inverse {
 	background-color: #151515;
 	margin-bottom: 0px;
