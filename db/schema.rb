@@ -53,18 +53,18 @@ ActiveRecord::Schema.define(version: 2019_02_18_110526) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "genre", default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "genre", default: ""
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["genre"], name: "index_genres_on_genre"
   end
 
   create_table "items", force: :cascade do |t|
     t.string "title", default: "", null: false
-    t.integer "artist_id", null: false
+    t.integer "artist_id"
     t.string "image_id"
-    t.integer "genre_id", null: false
-    t.integer "label_id", null: false
+    t.integer "genre_id"
+    t.integer "label_id"
     t.integer "price", null: false
     t.integer "stock", null: false
     t.integer "item_is_deleted", default: 0, null: false
@@ -116,10 +116,10 @@ ActiveRecord::Schema.define(version: 2019_02_18_110526) do
   end
 
   create_table "tunes", force: :cascade do |t|
-    t.string "tune_name", default: "", null: false
-    t.integer "disc_id", null: false
-    t.integer "index", null: false
-    t.datetime "created_at", null: false
+    t.string "tune_name", default: ""
+    t.integer "disc_id"
+    t.integer "index"
+    t.datetime "created_at",
     t.datetime "updated_at", null: false
   end
 

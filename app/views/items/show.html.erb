@@ -1,32 +1,31 @@
 <div class="container">
   <div class="row">
-  	<% @items.each do |item| %>
         <div class="col-lg-4">
-            <%= attachment_image_tag item, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg" %>
+            <%= attachment_image_tag @item, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg" %>
         </div>
         <div class="col-lg-8">
         	<u><h4>シングル・アルバム名</h4></u>
-		    <h1><%= item.title %></h1>
+		    <h1><%= @item.title %></h1>
 		</div>
 	</div>
 	<div class="row">
         <div class="col-lg-3">
         	<h5>アーティスト</h5>
-        	<h3><%= item.artist.artist_name %></h3>
+        	<h3><%= @item.artist.artist_name %></h3>
         </div>
         <div class="col-lg-3">
         	<h5>ジャンル</h5>
-        	<h3><%= item.genre.genre %></h3>
+        	<h3><%= @item.genre.genre %></h3>
         </div>
         <div class="col-lg-3">
         	<h5>レーベル</h5>
-        	<h3><%= item.label.label; %></h3>
+        	<h3><%= @item.label.label; %></h3>
         </div>
         <div class="col-lg-1">
         </div>
         <div class="col-lg-2">
         	<h5>価格</h5>
-        	<h3>¥<%= item.price %></h3>
+        	<h3>¥<%= @item.price %></h3>
         </div>
     </div>
     <div class="row">
@@ -34,12 +33,11 @@
         </div>
         <div class="col-lg-10">
         	<h5>コメント</h5>
-        	<h3><%= item.artist.caption %></h3>
+        	<h3><%= @item.artist.comment %></h3>
         <div class="col-lg-1">
         </div>
         </div>
     </div>
-    <% end %>
 
     <div class="row">
     	<div class="col-lg-1">
@@ -52,7 +50,7 @@
 
         	<% @tunes.each do |tune| %>
         	<h5 class="well">曲名</h5>
-        	<p>No.<%= tune.id %></p>
+        	<p>No.<%= tune.index %></p>
         	<p>No.<%= tune.tune_name %></p>
         	<% end %>
         </div>
