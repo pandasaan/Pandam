@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(current_user.id)
-    @order = Order.all
+    @orders = Order.where(user_id: current_user)
+    @orders_items = OrderItem.where(order_id: @orders)
   end
 
   def edit
