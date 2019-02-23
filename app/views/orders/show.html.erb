@@ -11,10 +11,9 @@
 　　    <div class="well">
           <h4>購入日時：<%= order.created_at.strftime('%Y/%m/%d %H:%M') %></h4>
           <h4>配送ステータス：<%= order.dlv_status %></h4>
-          <h4>
-            キャンセルステータス：<%= order.cancell_status %>
-            <%= link_to "キャンセルする", flg_update_order_path(order.id, params: {order: {cancell_status: "user_cancell"}}), method: :put %>
-          </h4>
+          <h4>キャンセルステータス：<%= order.cancell_status %></h4>
+          <div class="btn"><%= link_to "キャンセルする", flg_update_order_path(order.id, params: {order: {cancell_status: "user_cancell"}}), method: :put %>
+          </div>
         </div>
 
         <div class="well">
@@ -40,6 +39,7 @@
           <th>数量</th>
           <th>小計</th>
           <th></th>
+          <th></th>
        </tr>
       </thead>
       <tbody>
@@ -51,6 +51,9 @@
           <td><%= amount = orderitem.amount %>枚</td>
           <td><%= price * amount %></td>
           <td><%= link_to item_path(id: orderitem.item.id) do %>商品詳細<% end %></td>
+          <td>キャンセルステータス：<%= orderitem.cancell_status %>
+          <%= link_to "この商品をキャンセルする", item_flg_update_order_path(orderitem.id) ,  method: :patch %>
+          </td>
         </tr>
     <% end %>
       </tbody>

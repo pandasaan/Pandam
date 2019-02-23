@@ -32,7 +32,7 @@ devise_for :users, controllers: {
   resources :orders, only: [:new, :create, :index, :show]
   get '/orders/:id/result' => 'orders#result', as: "result_order"
   put "order/:id/show" => 'orders#flg_update', as:"flg_update_order"
-  patch '/orders/line_items/:id' => 'orders#item_flg_update'
+  patch '/orders/line_items/:id' => 'orders#item_flg_update', as:"item_flg_update_order"
 
   # items関連
   resources :items, only: [:show]
