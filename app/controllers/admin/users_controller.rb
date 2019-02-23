@@ -3,12 +3,12 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id)
+    @user = User.find(user.id)
     @order = Order.all
   end
 
   def edit
-    @users =User.find(current_user.id)
+    @users =User.find(user.id)
   end
 
   def update

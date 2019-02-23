@@ -33,8 +33,7 @@
           <%= item.price %>
         </td>
         <td>
-          <!-- 要修正 -->
-          <p>アーティスト名</p>
+          <%= @item.artist.artist_name %>
         </td>
         <td>
           <%= link_to "詳細", admin_item_path(item.id) %>
