@@ -15,7 +15,7 @@ devise_for :users, controllers: {
 
   # users関連
   get '/users/delete' => 'users#cancel'
-
+  delete 'delete/:id' => 'users#leave', as: 'destroy_delete'
   patch '/users/delete' => 'users#flg_update'
 
   resources :users, only: [:show, :edit, :update] do
