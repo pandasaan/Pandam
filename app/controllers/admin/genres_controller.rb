@@ -28,7 +28,8 @@ class Admin::GenresController < ApplicationController
   end
 
   def index
-    @genres = Genre.all
+    @search = Genre.ransack(params[:q])
+    @search_genres = @search.result.page(params[:page])
   end
 
   def destroy
