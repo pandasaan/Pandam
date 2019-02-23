@@ -43,15 +43,13 @@
     	<div class="col-lg-1">
         </div>
         <div class="col-lg-11">
-        	<% @discs.each do |disc| %>
+            <% @item.discs.each do |disc| %>
         	<h5>ディスク</h5>
         	<h3>DISC<%= disc.id %></h3>
-        	<% end %>
 
-        	<% @tunes.each do |tune| %>
         	<h5 class="well">曲名</h5>
-        	<p>No.<%= tune.index %></p>
-        	<p>No.<%= tune.tune_name %></p>
+        	<p>No.<%= disc.tunes.index %></p>
+        	<p><%= disc.tunes.tune_name %></p>
         	<% end %>
         </div>
     </div>
