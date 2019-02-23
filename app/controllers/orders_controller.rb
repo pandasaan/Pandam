@@ -1,8 +1,6 @@
 class OrdersController < ApplicationController
   def new
-
-    @ships = Shipment.where(user_id: current_user.id)
-
+     @ships = Shipment.where(user_id: current_user.id)
   end
 
   def modal
@@ -37,6 +35,16 @@ class OrdersController < ApplicationController
     order_items = OrderItem.new(item_id: cart.item.id, amount: cart.amount, order_price: cart.item.price, order_id: order.id)
     order_items.save!
           end
+
+    order_items = OrderItem.where(order_id: order.id)
+          order_items.each do |orderitem|
+    after_stock = orderitem.item.stock
+    after_stock -= orderitem.amount
+    orderitem.item.update(stock: after_stock)
+          end
+
+    carts.destroy_all
+
     redirect_to result_order_path(id: order.id)
     flash[:notice] = "ご購入ありがとうございます！"
   end
