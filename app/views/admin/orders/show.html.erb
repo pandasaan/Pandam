@@ -1,10 +1,18 @@
 <div class="container">
   <h2>購入詳細</h2>
   <div class="dlv_status">
-    <!-- 配達状況変更欄 -->
+    <%= form_for@order, :url => { :controller => :orders, :action => :dlv_flg_update }  do |f| %>
+      <%= f.label "手配状況 : " %>
+      <%= f.select :dlv_status, Order.dlv_statuses.keys.to_a, {} %>
+      <%= f.submit "Update" %>
+    <% end %>
   </div>
   <div class="cancell_status">
-    <!-- キャンセル状況変更欄 -->
+    <%= form_for@order, :url => { :controller => :orders, :action => :flg_update }  do |f| %>
+      <%= f.label "キャンセル対応 : " %>
+      <%= f.select :cancell_status, Order.cancell_statuses.keys.to_a, {} %>
+      <%= f.submit "Update" %>
+    <% end %>
   </div>
 
   <div class="order-info">
@@ -24,7 +32,13 @@
               <li>購入枚数 : <%= order_item.amount %></li>
             </ol>
           </li>
-          <li>キャンセル情報 : <%= order_item.cancell_status %></li>
+          <li>
+            <%= form_for(order_item, :url => {:controller => :orders, :action => :item_flg_update }) do |f| %>
+              <%= f.label "個別キャンセル状況 : " %>
+              <%= f.select :cancell_status, OrderItem.cancell_statuses.keys.to_a, {} %>
+              <%= f.submit "Update" %>
+            <% end %>
+          </li>
         </ul>
       <% end %>
     </div>
@@ -32,4 +46,5 @@
       <p>購入総計 : ¥<%= @order.total_price %></p>
     </div>
   </div>
+  <%= link_to "Back", admin_orders_path %>
 </div>
