@@ -48,9 +48,10 @@
         	<h3>DISC<%= disc.id %></h3>
 
         	<h5 class="well">曲名</h5>
-        	<p>No.<%= disc.tunes.index %></p>
-        	<p><%= disc.tunes.tune_name %></p>
+        	<p>No.<%= tune.id %></p>
+        	<p></p>
         	<% end %>
         </div>
     </div>
+    <div class="btn"><%= link_to "マイページへ戻る", user_path(id: current_user.id) %></div>
 </div>
