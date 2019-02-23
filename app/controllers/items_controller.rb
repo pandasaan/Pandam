@@ -5,7 +5,5 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @discs = Disc.where(item_id: params[:id])
-    @tunes = Tune.where(disc_id: @discs.id)
   end
 end
