@@ -11,6 +11,7 @@
 　　    <div class="well">
           <h4>購入日時：<%= order.created_at.strftime('%Y/%m/%d %H:%M') %></h4>
           <h3><%= order.user.name %>様、ご購入ありがとうございます！！</h3>
+          <h5><%= link_to "購入詳細ページへ", order_path(id: order.id) %></h5>
         </div>
 
         <div class="well">
