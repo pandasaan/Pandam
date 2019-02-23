@@ -2,7 +2,7 @@
 	<div class="row">
 
 <div class="col-md-6">
-	<h1>新規投稿</h1>
+	<h1>配送先登録</h1>
 
 	<%= form_for @shipments,url: user_shipments_path(current_user.id) do |f| %>
 
@@ -18,10 +18,10 @@
 	<h4>住所</h4>
 	<%= f.text_field :shipment_address %>
 
-	<%= f.submit '新規登録' %>
+	<%= f.submit '登録' %>
 	<% end %>
 
-	<%= link_to "Back", user_path(current_user.id)  %>
+	<%= link_to "マイページへ戻る", user_path(current_user.id)  %>
 
 </div>
 
