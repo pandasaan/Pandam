@@ -1,0 +1,47 @@
+<div class= "container admin">
+  <h1>アイテム一覧</h1>
+  <%= link_to "Top", admin_top_path, class: "pull-right" %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          名前（姓、名）
+        </th>
+        <th>
+          名前(カナ）
+        </th>
+        <th>
+          郵便番号
+        </th>
+        <th>
+          住所
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+  <% @users.each do |user| %>
+    <tbody>
+      <tr>
+        <td>
+          <%= user.name %>
+        </td>
+        <td>
+          <%= user.name_kana %>
+        </td>
+        <td>
+          <%= user.postal_code %>
+        </td>
+        <td>
+          <%= user.postal_code %>
+        </td>
+        <td>
+          <%= user.postal_code %>
+        </td>
+        <td>
+          <%= link_to "詳細", admin_item_path(item.id) %>
+        </td>
+      </tr>
+    </tbody>
+  <% end %>
+  </table>
+</div>
