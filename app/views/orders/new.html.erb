@@ -6,8 +6,8 @@
 
 
     <div class="col-xs-11">
-  	  <h2>レジページ</h2>
-        <h3>送付先一覧</h3>
+  	  <h2>購入確認</h2>
+        <h3>送付先確認</h3>
             <div>
               <%= form_tag ("/orders/result"), method: "get", remote: true do %>
                 <%= select_tag :shipment_id, options_from_collection_for_select(@ships, :id, :shipment_name) %>
