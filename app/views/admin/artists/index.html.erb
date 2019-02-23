@@ -2,6 +2,12 @@
   <h2>アーティスト一覧</h2>
   <%= link_to "TOP", admin_top_path, class: "btn btn-primary" %>
   <%= link_to "New Artist", new_admin_artist_path, class: "btn btn-warning" %>
+  <div class="search-form">
+    <%= search_form_for(@search, url: admin_artists_path) do |f| %>
+      <%= f.text_field :artist_name_cont, placeholder: "アーティスト名を入力" %>
+      <%= f.submit "Search", class: "btn btn-default" %>
+    <% end %>
+  </div>
   <table class="table">
     <thead>
       <tr>
@@ -10,7 +16,7 @@
         <th></th>
       </tr>
     </thead>
-  <% @artists.each do |artist| %>
+  <% @search_artists.each do |artist| %>
     <tbody>
       <tr>
         <td>
@@ -26,4 +32,5 @@
     </tbody>
   <% end %>
   </table>
+  <%= paginate @search_artists, class: "paginate" %>
 </div>

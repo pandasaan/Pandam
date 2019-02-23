@@ -2,6 +2,12 @@
   <h2>レーベル一覧</h2>
   <%= link_to "TOP", admin_top_path, class: "btn btn-primary" %>
   <%= link_to "New Label", new_admin_label_path, class: "btn btn-warning" %>
+  <div class="search_form">
+    <%= form_for(@search, url: admin_labels_path) do |f| %>
+      <%= f.text_field :label_cont, placeholder: "レーベル名を入力" %>
+      <%= f.submit "Seach", class: "btn btn-default" %>
+    <% end %>
+  </div>
   <table class="table">
     <thead>
       <tr>
@@ -9,7 +15,7 @@
         <th></th>
       </tr>
     </thead>
-     <% @labels.each do |label| %>
+     <% @search_labels.each do |label| %>
       <tbody>
         <tr>
           <td>
@@ -22,4 +28,5 @@
       </tbody>
      <% end %>
   </table>
+  <%= paginate @search_labels %>
 </div>

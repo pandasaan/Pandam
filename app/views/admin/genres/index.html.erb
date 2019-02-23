@@ -2,6 +2,12 @@
   <h2>ジャンル一覧</h2>
   <%= link_to "TOP", admin_top_path, class: "btn btn-primary" %>
   <%= link_to "New Genre", new_admin_genre_path, class: "btn btn-warning" %>
+  <div class="search-form">
+    <%= search_form_for(@search, url: admin_genres_path) do |f| %>
+      <%= f.text_field :genre_cont %>
+      <%= f.submit "Search", class: "btn btn-default", placeholder: "ジャンル名を入力" %>
+    <% end %>
+  </div>
   <table class="table">
     <thead>
       <tr>
@@ -9,7 +15,7 @@
         <th></th>
       </tr>
     </thead>
-     <% @genres.each do |genre| %>
+     <% @search_genres.each do |genre| %>
       <tbody>
         <tr>
           <td>
@@ -22,5 +28,6 @@
       </tbody>
      <% end %>
   </table>
+  <%= paginate @search_genres, class: "paginate" %>
 </div>
 

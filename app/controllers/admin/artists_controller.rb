@@ -15,7 +15,8 @@ class Admin::ArtistsController < ApplicationController
   end
 
   def index
-    @artists = Artist.all
+    @search = Artist.ransack(params[:q])
+    @search_artists = @search.result.page(params[:page])
   end
 
   def edit
