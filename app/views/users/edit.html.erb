@@ -1,4 +1,11 @@
-<h1>User info</h1>
+<div class="container">
+<div class="row">
+
+  <div class="col-xs-1">
+  </div>
+
+  <div class="col-xs-11">
+<h1>ユーザー情報編集</h1>
 <%= form_for([:admin, @users]) do |f| %>
 
     <h4>名前（姓、名）</h4>
@@ -16,11 +23,11 @@
     <h4>電話番号</h4>
     <%= f.text_field :tell %>
 
-    <h4>email</h4>
+    <h4>メールアドレス</h4>
     <%= f.text_field :email %>
 
 
 
-    <%= f.submit 'Update User' %>
+    <%= f.submit '更新' %>
 <% end %>
-<%= link_to "Back", user_path(current_user.id)  %>
+<%= link_to "マイページへ戻る", user_path(current_user.id)  %>
