@@ -65,20 +65,16 @@ class OrdersController < ApplicationController
 
   def flg_update
     order = Order.find(params[:id])
-    order.update(order_params)
+    order.cancell_status = "user_cancell"
+    order.save
     redirect_to order_path(params[:id])
   end
 
   def item_flg_update
     orderitem = OrderItem.find(params[:id])
-    orderitem.update(cancell_status: "user_cancell")
+    orderitem.cancell_status = "user_cancell"
+    orderitem.save
     redirect_to order_path(id: orderitem.order.id)
   end
-
-    private
-
-    def order_params
-      params.require(:order).permit(:cancell_status)
-    end
 
 end

@@ -12,7 +12,7 @@
           <h4>購入日時：<%= order.created_at.strftime('%Y/%m/%d %H:%M') %></h4>
           <h4>配送ステータス：<%= order.dlv_status %></h4>
           <h4>キャンセルステータス：<%= order.cancell_status %></h4>
-          <div class="btn"><%= link_to "キャンセルする", flg_update_order_path(order.id, params: {order: {cancell_status: "user_cancell"}}), method: :put %>
+          <div class="btn"><%= link_to "キャンセルする", flg_update_order_path(order.id),  method: :put %>
           </div>
         </div>
 
