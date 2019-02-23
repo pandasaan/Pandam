@@ -1,3 +1,11 @@
+<div class="container">
+<div class="row">
+
+  <div class="col-xs-1">
+  </div>
+
+  <div class="col-xs-11">
+
 退会ページ
 <div style="padding: 10px; border: 1px dotted; #333333;border-radius: 10px; margin: 10px;">
 本当に<br>
@@ -7,8 +15,8 @@
 	    <%= link_to "退会せずにマイページに戻る", user_path(current_user.id) %>
 	</span>
 
-	<%= link_to  users_delete_path(current_user), method: :delete do%>
+	<%= link_to  destroy_delete_path(current_user), method: :delete do%>
 		退会する
 		<%end%>
-	</span>
+</div>
 </div>
