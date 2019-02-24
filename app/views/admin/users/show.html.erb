@@ -1,8 +1,36 @@
+<div class="container">
+<div class="row">
 
+  <div class="col-xs-1">
+  </div>
 
+  <div class="col-xs-11">
+	<div style="padding: 10px; margin-bottom: 10px; border: 5px double #333333;">
+	    <div>
+			<ul style="list-style-type:circle;">
+				<li>名前（性・名)：<%= @user.name %></li>
+				<li>名前（カナ)：<%= @user.name_kana %>
+				<li>郵便番号：<%= @user.postal_code %></li>
+				<li>住所：<%= @user.address %></li>
+				<li>電話番号：<%= @user.tell %></li>
+				<li>メールアドレス：<%= @user.email %></li>
+			</ul>
+			<%=link_to "登録情報編集", edit_user_path %>
+			| <%=link_to "登録送付先編集",admin_shipments_path(@user.id) %>
+            <%= link_to "Delete", admin_users_path(@user.id), class: "btn btn-danger",  data: {confirm: "本当に削除しますか？"}, method: :delete %>
+		</div>
+</div>
 
-
-
-
-
-
+<div>
+	<% current_user.orders.each do |order| %>
+	<%= link_to item_path do %>
+	<% order.order_items.each do |item| %>
+	<%= attachment_image_tag item.item, :image, :fill, 100,100,format: 'jpg' %>
+	<% end %>
+<% end %>
+<%= link_to order_path do %>
+	<%= order.created_at.strftime('%Y/%m/%d %H:%M') %>
+<% end %>
+<% end %>
+</div>
+</div>

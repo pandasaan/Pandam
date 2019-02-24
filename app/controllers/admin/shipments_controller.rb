@@ -3,6 +3,7 @@ class Admin::ShipmentsController < ApplicationController
   end
 
   def index
+    user = User.find(params[:id])
     @shipments = Shipment.all
   end
 

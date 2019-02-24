@@ -8,8 +8,9 @@ class ShipmentsController < ApplicationController
   end
 
   def index
-    @shipments = Shipment.new
-    @shipment = current_user.shipments
+    @shipments = Shipment.all
+    user = User.all
+    @shipment = user.shipments
 
   end
 
