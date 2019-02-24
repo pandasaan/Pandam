@@ -14,7 +14,8 @@ class Admin::LabelsController < ApplicationController
   end
 
   def index
-    @labels = Label.all
+    @search = Label.ransack(params[:q])
+    @search_labels = @search.result.page(params[:page])
   end
 
   def edit
