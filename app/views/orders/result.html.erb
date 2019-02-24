@@ -4,20 +4,23 @@
   <div class="col-xs-1">
   </div>
 
-  <div class="col-xs-11">
-	<h1>購入結果</h1>
+  <div class="panel panel-info col-xs-11">
+	<h1 class="panel panel-heading">購入結果</h1>
 
     <% @orders.each do |order| %>
-　　    <div class="well">
+　　    <div class="panel">
           <h4>購入日時：<%= order.created_at.strftime('%Y/%m/%d %H:%M') %></h4>
           <h3><%= order.user.name %>様、ご購入ありがとうございます！！</h3>
-          <h5><%= link_to "購入詳細ページへ", order_path(id: order.id) %></h5>
+          <h5><%= link_to "購入詳細ページへ", order_path(id: order.id), class: "btn btn-lg btn-primary" %></h5>
         </div>
 
-        <div class="well">
-                <p>宛名：<%= order.order_name %></p>
-                <p>郵便番号：<%= order.order_postal_code %></p>
-                <p>送付先住所：<%= order.order_address %></p>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4 class="panel-title">送付先</h4>
+          </div>
+                <p class= "ship-text">宛名：<%= order.order_name %></p>
+                <p class= "ship-text">郵便番号：<%= order.order_postal_code %></p>
+                <p class= "ship-text">送付先住所：<%= order.order_address %></p>
         </div>
 
         <div>
