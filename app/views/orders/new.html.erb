@@ -11,7 +11,7 @@
           <div class="row">
             <div class="col-xs-5"><h4>送付先No.
               <%= form_tag ("/orders/result"), method: "get", remote: true do %>
-                <%= select_tag :shipment_id, options_from_collection_for_select(@ships, :id, :id) %></h4>
+                <%= select_tag :shipment_id, options_from_collection_for_select(@ships, :id, :shipment_name, ) %></h4>
 
 
                 <div class="clearfix">
