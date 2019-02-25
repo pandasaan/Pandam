@@ -1,6 +1,6 @@
 <div class= "container admin">
-  <h1>アイテム一覧</h1>
-  <%= link_to "Top", admin_top_path, class: "pull-right" %>
+  <h1>ユーザー一覧</h1>
+  <%= link_to "TOP", admin_top_path, class: "btn btn-primary" %>
   <table class="table">
     <thead>
       <tr>
@@ -38,7 +38,7 @@
           <%= user.postal_code %>
         </td>
         <td>
-          <%= link_to "詳細", admin_item_path(item.id) %>
+          <%= link_to "詳細", admin_user_path(user.id) %>
         </td>
       </tr>
     </tbody>

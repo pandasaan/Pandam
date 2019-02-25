@@ -5,3 +5,22 @@
 ul {
   list-style: none;
 }
+
+.red {
+  color: red;
+  animation: Red 2s infinite;
+}
+
+@keyframes Red {
+  50%{
+  opacity: 0;
+  }
+}
+
+.blue {
+  color: blue;
+}
+
+.gray {
+  color: gray;
+}

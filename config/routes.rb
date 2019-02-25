@@ -45,11 +45,12 @@ devise_for :users, controllers: {
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
+    patch '/users/:id/delete' => 'users#flg_update', as: "delete_user"
     resources :shipments, only: [:index, :edit, :update]
     resources :orders, only: [:show, :index]
     patch '/orders/:id/dlv' => 'orders#dlv_flg_update'
     patch '/orders/:id/cancell' => 'orders#flg_update'
-    patch '/orders/line_items/:id/cancell' => 'orders#item_flg_update'
+    patch '/orders/line_items/:id/cancell' => 'orders#item_flg_update', as: 'item_cancel'
     resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     patch '/items/:id/flg_update' => 'items#flg_update'
     resources :artists, only: [:new, :create, :index, :edit, :update, :destroy]

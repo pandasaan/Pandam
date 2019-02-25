@@ -1,3 +1,73 @@
+<div class="container">
+  <% if @user.user_is_deleted == "active" %>
+    <h2>ユーザー詳細情報</h2>
+  <% else %>
+    <h2>ユーザー詳細情報　<span class="red">※退会済み</span></h2>
+  <% end %>
+  <%= link_to "TOP", admin_top_path, class: "btn btn-primary" %>
+  
+  <ul>
+    <li>ユーザーID : <%= @user.id %></li>
+    <li>ユーザー名 : <%= @user.name %></li>
+    <li>ユーザー名（カナ） : <%= @user.name_kana %></li>
+    <li>Email : <%= @user.email %></li>
+    <li>Tell : <%= @user.tell %></li>
+    <li>郵便番号 : <%= @user.postal_code %></li>
+    <li>住所 : <%= @user.address %></li>
+  </ul>
+  <%= link_to "Edit", edit_admin_user_path(@user.id), class: "btn btn-success" %>
+  <%= link_to "Delete", admin_delete_user_path(@user.id), class: "btn btn-danger", method: :patch %>
+
+  <h3><%= @user.name %>さんの購入履歴</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>購入日時</th>
+        <th>時刻</th>
+        <th>購入詳細</th>
+        <th>手配状況</th>
+        <th>キャンセル状況</th>
+        <th></th>
+        <th>対応日時</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= order.created_at.strftime('%H:%M') %></td>
+        <td >
+          <% order.order_items.each do |order_item| %>
+            <% if order_item.cancell_status == "user_cancell" %>
+              <p class="red"><%= order_item.item.title %> <%= order_item.cancell_status %><br></p>
+            <% else %>
+              <p class="gray"><%= order_item.item.title %> <%= order_item.cancell_status %><br></p>
+            <% end %>
+          <% end %>
+        </td>
+        <% if order.dlv_status == "order_accepted" %>
+          <td class="red"><%= order.dlv_status %></td>
+        <% elsif order.dlv_status == "getting_ready" %>
+          <td class="blue"><%= order.dlv_status %></td>
+        <% else %>
+          <td class="gray"><%= order.dlv_status %></td>
+        <% end %>
+        <% if order.cancell_status == "nomal" || order.cancell_status == "cancell_accepted" %>
+          <td><%= order.cancell_status %></td>
+        <% elsif order.cancell_status == "user_cancell" %>
+          <td class="red"><%= order.cancell_status %></td>
+        <% else %>
+          <td><%= order.cancell_status %></td>
+        <% end %>
+        <td>
+          <%= link_to "Show", admin_order_path(order.id) %>
+        </td>
+        <td><%= order.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
 
 
 
