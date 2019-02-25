@@ -27,19 +27,32 @@
 
 
 <div class="col-md-6">
+
 	<h1>送付先一覧</h1>
+
 	<% @shipment.each do |shipment| %>
 	    <%= link_to  edit_user_shipment_path(current_user.id,shipment.id) do %>
+	    <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px; background-color: #fff8dc; color: #ffffff;">
+	    	<div>
+	    <font color="black">
 	    <h6>名前（姓、名）</h6>
+	    </font>
 	    <%= shipment.shipment_name %>
-	    <h6>名前(カナ）</h6>
+	    <font color="black">
+	    <h1>名前(カナ）</h1>
+	    </font>
 	    <%= shipment.shipment_name_kana %>
-	    <h6>郵便番号</h6>
+	    <font color="black">
+	    <h3>郵便番号</h3>
+	    </font>
 	    <%= shipment.shipment_postal_code %>
-	    <h6>住所</h6>
+	    <font color="black">
+	    <h3>住所</h3>
+	    </font>
 	    <%= shipment.shipment_address %>
+	</div>
 	    <% end %>
-	    <br>
+	</div>
 	<% end %>
 </div>
 
