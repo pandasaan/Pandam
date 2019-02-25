@@ -1,3 +1,14 @@
 // Place all the styles related to the admin/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.red {
+  color: red;
+  animation: Red 2s infinite;
+}
+
+@keyframes Red {
+  50%{
+  opacity: 0;
+  }
+}

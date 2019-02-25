@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_18_110526) do
+ActiveRecord::Schema.define(version: 2019_02_25_075518) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2019_02_18_110526) do
     t.string "order_postal_code", default: "", null: false
     t.string "order_address", default: "", null: false
     t.integer "total_price", null: false
-    t.integer "dlv_status", limit: 1, default: 0, null: false
+    t.integer "dlv_status", default: 0, null: false
     t.integer "cancell_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 2019_02_18_110526) do
     t.string "postal_code"
     t.string "address"
     t.string "tell"
-    t.integer "user_is_deleted"
+    t.integer "user_is_deleted", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
