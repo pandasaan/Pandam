@@ -3,14 +3,14 @@
   <div class="dlv_status">
     <%= form_for@order, :url => { :controller => :orders, :action => :dlv_flg_update }  do |f| %>
       <%= f.label "手配状況 : " %>
-      <%= f.select :dlv_status, Order.dlv_statuses.keys.to_a, {} %>
+      <%= f.select :dlv_status, Order.dlv_statuses.keys.to_a, {},class: "dlv" %>
       <%= f.submit "Update" %>
     <% end %>
   </div>
   <div class="cancell_status">
     <%= form_for@order, :url => { :controller => :orders, :action => :flg_update }  do |f| %>
       <%= f.label "キャンセル対応 : " %>
-      <%= f.select :cancell_status, Order.cancell_statuses.keys.to_a, {} %>
+      <%= f.select :cancell_status, Order.cancell_statuses.keys.to_a, {}, class: "cancell" %>
       <%= f.submit "Update" %>
     <% end %>
   </div>
@@ -33,9 +33,9 @@
             </ol>
           </li>
           <li>
-            <%= form_for(order_item, :url => {:controller => :orders, :action => :item_flg_update }) do |f| %>
+            <%= form_for(order_item, url: admin_item_cancel_path(order_item.id) ) do |f| %>
               <%= f.label "個別キャンセル状況 : " %>
-              <%= f.select :cancell_status, OrderItem.cancell_statuses.keys.to_a, {} %>
+              <%= f.select :cancell_status, OrderItem.cancell_statuses.keys.to_a, {}, class: "cancell" %>
               <%= f.submit "Update" %>
             <% end %>
           </li>

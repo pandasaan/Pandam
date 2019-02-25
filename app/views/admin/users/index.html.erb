@@ -1,6 +1,10 @@
 <div class= "container admin">
-  <h1>アイテム一覧</h1>
-  <%= link_to "Top", admin_top_path, class: "pull-right" %>
+  <h1>ユーザー一覧</h1>
+  <%= link_to "TOP", admin_top_path, class: "btn btn-primary" %>
+  <%= search_form_for(@search, url: admin_users_path) do |f| %>
+    <%= f.text_field :name_cont, placeholder: "ユーザー名を入力" %>
+    <%= f.submit "Search", class: "btn btn-default" %>
+  <% end %>
   <table class="table">
     <thead>
       <tr>
@@ -19,7 +23,7 @@
         <th></th>
       </tr>
     </thead>
-  <% @users.each do |user| %>
+  <% @search_users.each do |user| %>
     <tbody>
       <tr>
         <td>
@@ -38,10 +42,11 @@
           <%= user.postal_code %>
         </td>
         <td>
-          <%= link_to "詳細", admin_item_path(item.id) %>
+          <%= link_to "詳細", admin_user_path(user.id) %>
         </td>
       </tr>
     </tbody>
   <% end %>
   </table>
+  <%= paginate @search_users %>
 </div>

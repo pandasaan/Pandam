@@ -1,0 +1,41 @@
+<div class="container">
+<div class="row">
+
+  <div class="col-xs-1">
+  </div>
+
+  <div class="col-xs-11">
+<h1>ユーザー情報編集</h1>
+<%= form_for([:admin, @user]) do |f| %>
+  <div class="field">
+    <h4>名前（姓、名）</h4>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <h4>名前（カナ）</h4>
+    <%= f.text_field :name_kana %>
+  </div>
+  <div class="field">
+    <h4>郵便番号</h4>
+    <%= f.text_field :postal_code %>
+  </div>
+  <div class="field">
+    <h4>住所</h4>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <h4>電話番号</h4>
+    <%= f.text_field :tell %>
+  </div>
+  <div class="field">
+    <h4>メールアドレス</h4>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <h4>退会処理</h4>
+    <%= f.select :user_is_deleted, User.user_is_deleteds.keys.to_a, {} %>
+  </div>
+
+  <%= f.submit '更新' %>
+<% end %>
+<%= link_to "Back", admin_user_path(@user.id)  %>

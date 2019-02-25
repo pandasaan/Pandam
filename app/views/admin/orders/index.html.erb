@@ -20,13 +20,29 @@
         <td><%= order.user.name %></td>
         <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
         <td><%= order.created_at.strftime('%H:%M') %></td>
-        <td>
+        <td >
           <% order.order_items.each do |order_item| %>
-            <%= order_item.item.title %> <%= order_item.cancell_status %><br>
+            <% if order_item.cancell_status == "user_cancell" %>
+              <p class="red"><%= order_item.item.title %> <%= order_item.cancell_status %><br></p>
+            <% else %>
+              <p class="gray"><%= order_item.item.title %> <%= order_item.cancell_status %><br></p>
+            <% end %>
           <% end %>
         </td>
-        <td><%= order.dlv_status %></td>
-        <td><%= order.cancell_status %></td>
+        <% if order.dlv_status == "order_accepted" %>
+          <td class="red"><%= order.dlv_status %></td>
+        <% elsif order.dlv_status == "getting_ready" %>
+          <td class="blue"><%= order.dlv_status %></td>
+        <% else %>
+          <td class="gray"><%= order.dlv_status %></td>
+        <% end %>
+        <% if order.cancell_status == "nomal" || order.cancell_status == "cancell_accepted" %>
+          <td><%= order.cancell_status %></td>
+        <% elsif order.cancell_status == "user_cancell" %>
+          <td class="red"><%= order.cancell_status %></td>
+        <% else %>
+          <td><%= order.cancell_status %></td>
+        <% end %>
         <td>
           <%= link_to "Show", admin_order_path(order.id) %>
         </td>
@@ -35,4 +51,5 @@
     <% end %>
     </tbody>
   </table>
+  <%= paginate @orders %>
 </div>

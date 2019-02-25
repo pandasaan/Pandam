@@ -48,6 +48,6 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :title, :price, :stock, :artist_id, :label_id, :genre_id, discs_attributes: [:disc_name, :_destroy, tunes_attributes: [:tune_name, :_destroy]])
+    params.require(:item).permit(:image, :title, :price, :stock, :artist_id, :label_id, :genre_id, :item_is_deleted, discs_attributes: [:disc_name, :_destroy, tunes_attributes: [:tune_name, :index, :_destroy]])
   end
 end
