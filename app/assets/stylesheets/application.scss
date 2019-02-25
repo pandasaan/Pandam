@@ -16,10 +16,10 @@
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import "bootstrap";            /*ここを追加*/
 
-body {
-
+.container {
+	width: 90%;
+	margin: 0 auto;
 }
-
 
 .navbar-inverse {
 	background-color: #151515;
@@ -42,6 +42,7 @@ body {
 }
 
 .top {
+    width: 100%;
 	background-color: #151515;
     color: #FFFFFF;
 }
@@ -60,19 +61,18 @@ main {
 	text-align: center;
 }
 
-.item img {
-    overflow: hidden;
-    float: left;
-    margin: 10px;
-    display: block;
-    transition-duration: 0.3s;
+
+.panel {
+	margin: 10px;
 }
 
-.item img:hover {
-    transform: scale(1.1);
-    transition-duration: 0.3s;
+.panel-default {
+	padding: 10px;
 }
 
+.ship-text {
+	margin: 10px;
+}
 
 footer {
     width: 100%;
