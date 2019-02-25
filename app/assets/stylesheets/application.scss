@@ -16,7 +16,10 @@
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import "bootstrap";            /*ここを追加*/
 
-
+.container {
+	width: 90%;
+	margin: 0 auto;
+}
 
 .navbar-inverse {
 	background-color: #151515;

@@ -5,41 +5,36 @@
 
 
 
-    <div class="panel panel-info col-xs-8">
+    <div class="panel panel-info col-xs-10">
       <h2 class="panel panel-heading">送付先確認画面</h2>
         <h3>送付先を選んでください。</h3>
-            <div><h4>送付先No.
+          <div class="row">
+            <div class="col-xs-5"><h4>送付先No.
               <%= form_tag ("/orders/result"), method: "get", remote: true do %>
                 <%= select_tag :shipment_id, options_from_collection_for_select(@ships, :id, :id) %></h4>
-              </div>
 
-            <div class="clearfix">
-                <%= submit_tag "購入確認画面へ", class: "btn btn-lg btn-primary" %>
-              <% end %>
-            </div>
 
-  <div class="row">
-    <div class="col-xs-1">
-    </div>
-    <div class="col-xs-8">
-          <% @ships.each do |ship| %>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h4 class="panel-title">送付先No.<%= ship.id %>
-                  </h4>
+                <div class="clearfix">
+                    <%= submit_tag "購入確認画面へ", class: "btn btn-lg btn-primary" %>
+                <% end %>
                 </div>
-                <p class= "ship-text">宛名：<%= ship.shipment_name %></p>
-                <p class= "ship-text">宛名（カナ）<%= ship.shipment_name_kana %></p>
-                <p class= "ship-text">郵便番号：<%= ship.shipment_postal_code %></p>
-                <p class= "ship-text">送付先住所：<%= ship.shipment_address %></p>
             </div>
-          <% end %>
+
+            <div class="col-xs-7">
+              <div class="row">
+                <% @ships.each do |ship| %>
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">送付先No.<%= ship.id %></h4>
+                    </div>
+                      <p class= "ship-text">宛名：<%= ship.shipment_name %></p>
+                      <p class= "ship-text">宛名（カナ）<%= ship.shipment_name_kana %></p>
+                      <p class= "ship-text">郵便番号：<%= ship.shipment_postal_code %></p>
+                      <p class= "ship-text">送付先住所：<%= ship.shipment_address %></p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
     </div>
-  </div>
-
-
-  </div>
-</div>
-
-
 <div id="order-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
