@@ -1,3 +1,4 @@
+<div class = "top" >
 <div class="container">
 	<div class="row">
 
@@ -17,42 +18,31 @@
 
 	<h4>住所</h4>
 	<%= f.text_field :shipment_address %>
-
+<font color="black">
 	<%= f.submit '登録' %>
+</font>
 	<% end %>
 
 	<%= link_to "マイページへ戻る", user_path(current_user.id)  %>
 
 </div>
 
-
 <div class="col-md-6">
-	
 	<h1>送付先一覧</h1>
-
-
 	<% @shipment.each do |shipment| %>
 	    <%= link_to  edit_user_shipment_path(current_user.id,shipment.id) do %>
 	    <font color="black">
-	    <h1>名前（姓、名）</h1>
-	    </font>
-	    <%= shipment.shipment_name %>
-	    <font color="black">
-	    <h1>名前(カナ）</h1>
-	    </font>
-	    <%= shipment.shipment_name_kana %>
-	    <font color="black">
-	    <h3>郵便番号</h3>
-	    </font>
-	    <%= shipment.shipment_postal_code %>
-	    <font color="black">
-	    <h3>住所</h3>
-	    </font>
-	    <%= shipment.shipment_address %>
+	    <div class="well">
+	    <h6><%= shipment.shipment_name_kana %></h6>
+	    <h1><%= shipment.shipment_name %></h1>
+	    <h3><%= shipment.shipment_postal_code %></h3>
+	    <h2><%= shipment.shipment_address %></h2>
 	    </div>
+	</font>
 	    <% end %>
-	<% end %>
-
+	    <% end %>
+</div>
+</div>
 
 
 
