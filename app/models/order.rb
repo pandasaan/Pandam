@@ -3,5 +3,5 @@ class Order < ApplicationRecord
   enum cancell_status: {nomal: 0, user_cancell: 1, cancell_accepted: 2}
 
   belongs_to :user
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
 end

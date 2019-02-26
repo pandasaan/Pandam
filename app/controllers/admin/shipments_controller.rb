@@ -1,4 +1,5 @@
 class Admin::ShipmentsController < ApplicationController
+  before_action :authenticate_admin!
   def create
   end
 
