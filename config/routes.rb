@@ -52,7 +52,8 @@ devise_for :users, controllers: {
     patch '/orders/:id/cancell' => 'orders#flg_update'
     patch '/orders/line_items/:id/cancell' => 'orders#item_flg_update', as: 'item_cancel'
     resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-    patch '/items/:id/flg_update' => 'items#flg_update'
+    # patch '/items/:id/flg_update' => 'items#flg_update', as: "delete_item"
+    patch '/items/:id/delete' => 'items#flg_update', as: "delete_item"
     resources :artists, only: [:new, :create, :index, :edit, :update, :destroy]
     resources :labels, only: [:new, :create, :edit, :update, :index, :destroy]
     resources :genres, only: [:new, :create, :edit, :update, :index, :destroy]

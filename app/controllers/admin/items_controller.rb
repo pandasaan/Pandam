@@ -29,7 +29,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:id])
+      item = Item.find(params[:id])
     if item.update(item_params)
       flash[:notice] = "編集が完了しました！"
       redirect_to admin_items_path
@@ -45,9 +45,24 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_items_path
   end
 
+  def flg_update
+   @item = Item.find(params[:id])
+   # @orders = @item.orders
+  if @item.item_is_deleted == "active"
+    @item.update_column(:item_is_deleted, 1)
+    redirect_to admin_item_path(@item.id)
+  else
+    flash[:notice] = "すでに削除済の商品です！"
+    render "show"
+  end
+  end
+
   private
 
   def item_params
     params.require(:item).permit(:image, :title, :price, :stock, :artist_id, :label_id, :genre_id, :item_is_deleted, discs_attributes: [:disc_name, :_destroy, tunes_attributes: [:tune_name, :index, :_destroy]])
+  end
+  def flg_params
+    params.require(:item).permit(:item_is_deleted)
   end
 end

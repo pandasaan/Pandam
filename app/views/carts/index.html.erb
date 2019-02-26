@@ -17,13 +17,16 @@
     <% if @carts.count != 0 %>
       <% @carts.each do |cart| %>
         <tr>
-            <!-- 後で画像情報に修正 -->
-          <td><%= cart.item.title %></td>
+          <td><%= attachment_image_tag cart.item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
           <td><%= cart.item.price %></td>
           <td>
-            <%= form_for(cart) do |f| %>
-              <%= f.number_field :amount, min: 1, max: cart.item.stock %>
-              <%= f.submit "数量を変更" %>
+            <% if cart.item.stock != 0 %>
+              <%= form_for(cart) do |f| %>
+                <%= f.number_field :amount, min: 1, max: cart.item.stock %>
+                <%= f.submit "数量を変更" %>
+              <% end %>
+            <% elsif cart.item.stock.zero? %>
+              <p class="soldout">現在売り切れ</p>
             <% end %>
           </td>
           <td>
