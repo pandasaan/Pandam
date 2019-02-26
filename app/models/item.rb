@@ -8,9 +8,9 @@ class Item < ApplicationRecord
   belongs_to :label
   has_many :discs, dependent: :destroy, inverse_of: :item
   has_many :tunes, through: :discs
-  has_many :carts
+  has_many :carts, dependent: :destroy
   has_many :users, through: :carts
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
 
   accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
 

@@ -23,7 +23,7 @@
       <p>購入日 : <%= @order.created_at.strftime('%Y/%m/%d') %></p>
     </div>
     <div class="order-detail">
-      <p>購入詳細</p>
+      <p>購入ディスク</p>
       <% @order.order_items.each do |order_item| %>
         <ul>
           <li>タイトル : <%= order_item.item.title %>
@@ -45,6 +45,13 @@
     <div class="order-total">
       <p>購入総計 : ¥<%= @order.total_price %></p>
     </div>
+    <div class="shipment-info">
+      <h3>送付先</h3>
+      <p>宛名 : <%= @order.order_name %></p>
+      <p>郵便番号 : 〒<%= @order.order_postal_code %></p>
+      <p>住所 : <%= @order.order_address %></p>
+    </div>
+
   </div>
   <%= link_to "Back", admin_orders_path %>
 </div>

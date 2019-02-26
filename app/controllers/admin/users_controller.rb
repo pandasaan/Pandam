@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @search = User.ransack(params[:q])
     @search_users = @search.result.page(params[:page])
