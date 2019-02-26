@@ -105,9 +105,7 @@
     <main>
       <% if flash[:notice] %>
         <p id=notice><%= flash[:notice] %></p>
-      <% end %>
-
-      <% if flash[:alert] %>
+      <% elsif flash[:alert] %>
         <p id=alert><%= flash[:alert] %></p>
       <% end %>
 
