@@ -8,7 +8,7 @@
  <div class="col-xs-11">
     <div style="padding: 10px; margin-bottom: 10px; border: 5px double #333333;">
         <div>
-            <font size =5px>ユーザー情報</font>
+            <font size =24px>ユーザー情報</font>
             <ul style="list-style-type:circle;">
                 <li>名前（性・名)：<%= @user.name %></li>
                 <li>名前（カナ)：<%= @user.name_kana %>
@@ -17,12 +17,12 @@
                 <li>電話番号：<%= @user.tell %></li>
                 <li>メールアドレス：<%= @user.email %></li>
             </ul>
-            <%=link_to "登録情報編集", edit_user_path %>
-            | <%=link_to "登録送付先編集",user_shipments_path(current_user.id) %>
-            | <%= link_to "退会", users_delete_path(current_user.id)  %>
+            <div class = "button"><%=link_to "登録情報編集", edit_user_path %></div>
+            | <div class = "button"><%=link_to "登録送付先編集",user_shipments_path(current_user.id) %></div>
+            | <div class = "button"><%= link_to "退会", users_delete_path(current_user.id)  %></div>
         </div>
 </div>
-<font size =5px>
+<font size =24px>
 購入履歴
 </font>
 
