@@ -41,11 +41,18 @@
 	color: #666;
 }
 
-.top {
+.top-visual {
     width: 100%;
 	background-color: #2E2E2E;
     color: #FFFFFF;
     font-family: monospace;
+}
+
+.main-visual {
+    width: 100%;
+    color: #FFFFFF;
+    font-family: monospace;
+    font-size: 14px;
 }
 
 main {
@@ -89,9 +96,36 @@ footer {
 	color: #9d9d9d;
     text-align: center;
 }
-.topnewbox{
+.button {
   display: inline-block;
-  margin: 5px;
-  padding: 10px;
-  background-color: #cccccc;
+  padding: 5px 8px;
+  background-color: #acabab;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 11px;
+}
+.button-danger {
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: red;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 11px;
+}
+
+.box-info {
+  margin: 10px;
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #FFF;
+  border: solid 3px black;
+  border-radius: 3px;
+  color: #2E2E2E;
+  font-size: 11px;
+}
+.text-big {
+  font-size: 36px;
+}
+.text-mid {
+  font-size: 24px;
 }
