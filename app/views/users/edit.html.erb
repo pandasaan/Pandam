@@ -7,7 +7,7 @@
 
   <div class="col-xs-11">
 <h1>ユーザー情報編集</h1>
-<%= form_for([:admin, @users]) do |f| %>
+<%= form_for (@users) do |f| %>
 
     <h4>名前（姓、名）</h4>
     <%= f.text_field :name %>
