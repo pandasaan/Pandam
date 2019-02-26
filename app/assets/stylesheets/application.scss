@@ -61,6 +61,16 @@ main {
 	text-align: center;
 }
 
+#alert {
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 30;
+  width: 100%;
+  background-color: #dc143c;
+  color: white;
+  text-align: center;
+}
+
 
 .panel {
 	margin: 10px;
