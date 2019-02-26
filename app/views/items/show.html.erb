@@ -1,59 +1,63 @@
+<div class="top">
 <div class="container">
   <div class="row">
-        <div class="col-lg-4">
-            <%= attachment_image_tag @item, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg" %>
+        <div class="col-lg-5">
+            <%= attachment_image_tag @item, :image, :fill, 350, 350, format: 'jpeg', fallback: "no_image.jpg" %>
         </div>
-        <div class="col-lg-8">
+        <div class="itembox col-lg-7">
         	<u><h4>シングル・アルバム名</h4></u>
 		    <h1><%= @item.title %></h1>
-		</div>
-	</div>
-	<div class="row">
-        <div class="col-lg-3">
-        	<h5>アーティスト</h5>
-        	<h3><%= @item.artist.artist_name %></h3>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <u><h5>アーティスト</h5></u>
+                    <h4><%= @item.artist.artist_name %></h4>
+                </div>
+                <div class="col-lg-4">
+                    <u><h5>ジャンル</h5></u>
+                    <h4><%= @item.genre.genre %></h4>
+                </div>
+              <div class="col-lg-4">
+                   <u><h5>レーベル</h5><u>
+                   <h4><%= @item.label.label; %></h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-8">
+              </div>
+              <div class="col-lg-4">
+                   <u><h5>価格</h5><u>
+                   <h4>¥<%= @item.price %></h4>
+              </div>
+            </div>
+            <div class="row">
+             <div class="col-lg-12">
+                   <u><h5>コメント</h5></u>
+                   <h4><%= @item.artist.comment %></h4>
+             </div>
+	        </div>
         </div>
-        <div class="col-lg-3">
-        	<h5>ジャンル</h5>
-        	<h3><%= @item.genre.genre %></h3>
-        </div>
-        <div class="col-lg-3">
-        	<h5>レーベル</h5>
-        	<h3><%= @item.label.label; %></h3>
-        </div>
-        <div class="col-lg-1">
-        </div>
-        <div class="col-lg-2">
-        	<h5>価格</h5>
-        	<h3>¥<%= @item.price %></h3>
-        </div>
-    </div>
-    <div class="row">
-    	<div class="col-lg-1">
-        </div>
-        <div class="col-lg-10">
-        	<h5>コメント</h5>
-        	<h3><%= @item.artist.comment %></h3>
-        <div class="col-lg-1">
-        </div>
-        </div>
-    </div>
+
 
     <div class="row">
-    	<div class="col-lg-1">
-        </div>
-        <div class="col-lg-11">
+        <div class="col-lg-12">
             <% @item.discs.each do |disc| %>
-            	<h5>ディスク</h5>
-            	<h3>DISC<%= disc.id %></h3>
-                <p>曲一覧</p>
-                <div class="well">
+            	<h4><b>ディスク名：<%= disc.disc_name %></b></h4>
+            <div class="row">
+              <div class="col-lg-1">
+              </div>
+              <div class="col-lg-11">
+                <u><h5>曲一覧</h5></u>
                     <% disc.tunes.each do |tune| %>
-                        <p>No.<%= tune.index %> : <%= tune.tune_name %></p>
+                        <h6>No.<%= tune.index %> : <%= tune.tune_name %></h6>
                     <% end %>
-                </div>
+              </div>
+            </div>
         	<% end %>
         </div>
     </div>
-    <div class="btn"><%= link_to "マイページへ戻る", user_path(id: current_user.id) %></div>
+
+    <div class="btn btn-default"><%= link_to "マイページへ戻る", user_path(id: current_user.id) %></div>
+</div>
+</div>
 </div>

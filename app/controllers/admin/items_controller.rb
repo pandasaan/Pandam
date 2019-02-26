@@ -1,5 +1,5 @@
 class Admin::ItemsController < ApplicationController
-
+  before_action :authenticate_admin!
   def new
     @item = Item.new
     @disc = @item.discs.build
@@ -42,7 +42,7 @@ class Admin::ItemsController < ApplicationController
     item = Item.find(params[:id])
     item.destroy
     flash[:notice] = "削除しました"
-    redirect_to admin_item_path
+    redirect_to admin_items_path
   end
 
   private

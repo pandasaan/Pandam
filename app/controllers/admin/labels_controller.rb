@@ -1,4 +1,5 @@
 class Admin::LabelsController < ApplicationController
+  before_action :authenticate_admin!
   def new
     @label = Label.new
   end
