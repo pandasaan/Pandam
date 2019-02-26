@@ -34,9 +34,8 @@
 <div class="actions"><%= f.submit "検索" %></div>
 <% end %>
 
-<% @products.each do |item| %>
-<%= item.title %>
-<% end %>
+
+
 
 <% @orders_items.each do |order| %>
 <div class = "topnewbox">
@@ -45,6 +44,7 @@
 <%= attachment_image_tag order.item, :image, :fill, 220,220,format: 'jpg' %>
 <% end %>
     </div>
+
 
 <div>
     <font color ="black">購入日時</font>
@@ -55,5 +55,6 @@
 </div>
 
 <% end %>
+
 </div>
 </div>
