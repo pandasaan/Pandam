@@ -25,7 +25,7 @@ class Admin::UsersController < ApplicationController
     @orders = @user.orders
     if @user.user_is_deleted == "active"
       @user.update_column(:user_is_deleted, 1)
-      redirect_to admin_user_path(user.id)
+      redirect_to admin_user_path(@user.id)
     else
       flash[:notice] = "すでに退会済のユーザーです！"
       render "show"
