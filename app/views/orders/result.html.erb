@@ -11,6 +11,8 @@
 　　    <div class="panel">
           <h4>購入日時：<%= order.created_at.strftime('%Y/%m/%d %H:%M') %></h4>
           <h3><%= order.user.name %>様、ご購入ありがとうございます！！</h3>
+          <div class="panel panel-default">ツイートして知らせる!!<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      　　</div>
           <h5><%= link_to "購入詳細ページへ", order_path(id: order.id), class: "btn btn-lg btn-default" %></h5>
         </div>
 
@@ -30,35 +32,32 @@
     <% end %>
 
     <% @orderitems.each do |orderitem| %>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>画像</th>
-          <th>シングル・アルバム名</th>
-          <th>アーティスト</th>
-          <th>価格</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th></th>
-       </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= attachment_image_tag orderitem.item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
-          <td><%= orderitem.item.title %></td>
-          <td><%= orderitem.item.artist.artist_name %></td>
-          <td>￥<%= price = orderitem.order_price %></td>
-          <td><%= amount = orderitem.amount %>枚</td>
-          <td><%= price * amount %></td>
-          <td><%= link_to item_path(id: orderitem.item.id) do %>商品詳細<% end %></td>
-        </tr>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>画像</th>
+            <th>シングル・アルバム名</th>
+            <th>アーティスト</th>
+            <th>価格</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+         </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= attachment_image_tag orderitem.item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+            <td><%= orderitem.item.title %></td>
+            <td><%= orderitem.item.artist.artist_name %></td>
+            <td>￥<%= price = orderitem.order_price %></td>
+            <td><%= amount = orderitem.amount %>枚</td>
+            <td><%= price * amount %></td>
+            <td><%= link_to item_path(id: orderitem.item.id) do %>商品詳細<% end %></td>
+          </tr>
     <% end %>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
 
-
-      <div class="panel panel-default">ツイートして知らせる!!<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      </div>
 
   <div class="btn"><%= link_to "Topへ戻る", root_path %></div>
   </div>
