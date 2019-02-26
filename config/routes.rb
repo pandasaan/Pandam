@@ -29,7 +29,7 @@ devise_for :users, controllers: {
   # delete "/users/:user_id/shipments/:id" => "shipments#destroy", as: "delete_shipment"
 
   # orders関連
-  resources :orders, only: [:new, :create, :index, :show]
+  resources :orders, only: [:new, :create, :show]
   get '/orders/:id/result' => 'orders#result', as: "result_order"
   put "order/:id/show" => 'orders#flg_update', as:"flg_update_order"
   patch '/orders/line_items/:id' => 'orders#item_flg_update', as:"item_flg_update_order"

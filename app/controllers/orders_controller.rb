@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
   def new
-     @ships = Shipment.where(user_id: current_user.id)
+     @shipments = Shipment.where(user_id: current_user.id)
   end
 
   def modal
-    @ship = Shipment.find(params[:shipment_id])
+    @shipment = Shipment.find(params[:shipment_id])
 
     @carts = Cart.where(user_id: current_user.id)
         total = 0
@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
 
   def create
 
-    ship = Shipment.find(params[:shipment_id])
+    shipment = Shipment.find(params[:shipment_id])
           carts = Cart.where(user_id: current_user.id)
               total = 0
               carts.each do |a|
@@ -24,23 +24,23 @@ class OrdersController < ApplicationController
               end
       total_price = total
 
-      name = ship.shipment_name
-      postal_code = ship.shipment_postal_code
-      address = ship.shipment_address
+      name = shipment.shipment_name
+      postal_code = shipment.shipment_postal_code
+      address = shipment.shipment_address
 
     order = Order.new(user_id: current_user.id, order_name: name, order_postal_code: postal_code, order_address: address, total_price: total_price)
     order.save!
 
           carts.each do |cart|
     order_items = OrderItem.new(item_id: cart.item.id, amount: cart.amount, order_price: cart.item.price, order_id: order.id)
-    order_items.title = cart.item.title
+      order_items.title = cart.item.title
     order_items.save!
           end
 
     order_items = OrderItem.where(order_id: order.id)
           order_items.each do |orderitem|
-    after_stock = orderitem.item.stock
-    after_stock -= orderitem.amount
+      after_stock = orderitem.item.stock
+      after_stock -= orderitem.amount
     orderitem.item.update(stock: after_stock)
           end
 

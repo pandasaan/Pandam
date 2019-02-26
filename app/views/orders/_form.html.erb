@@ -7,49 +7,63 @@
         </div>
 
         <div  class="col-xs-10">
-  	    <h1>購入確認ページ</h1>
+  	    <div class="title text-big">購入確認</div>
 
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h4 class="panel-title">送付先No.<%= @ship.id %>
-                  </h4>
-                </div>
-                <p class= "ship-text">宛名：<%= @ship.shipment_name %></p>
-                <p class= "ship-text">宛名（カナ）<%= @ship.shipment_name_kana %></p>
-                <p class= "ship-text">郵便番号：<%= @ship.shipment_postal_code %></p>
-                <p class= "ship-text">送付先住所：<%= @ship.shipment_address %></p>
+            <div class="box-info">
+                  <div class="box-title text-mid">送付先No.<%= @shipment.id %>
+                  </div>
+                    <p class= "text-small">宛名：<%= @shipment.shipment_name %></p>
+                    <p class= "text-small">宛名（カナ）：<%= @shipment.shipment_name_kana %></p>
+                    <p class= "text-small">郵便番号：<%= @shipment.shipment_postal_code %></p>
+                    <p class= "text-small">送付先住所：<%= @shipment.shipment_address %></p>
             </div>
 
-    <table class="table table">
-        <thead>
-          <tr>
-            <th>商品情報</th>
-            <th>値段</th>
-            <th>数量</th>
-            <th>小計</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @carts.each do |cart| %>
-          <tr>
-            <td><%= attachment_image_tag cart.item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
-            <td>￥<%= cart.item.price %></td>
-            <td><%= cart.amount %>枚</td>
-            <td>￥<%= cart.item.price * cart.amount %></td>
-          </tr>
-        </tbody>
-        <% end %>
-    </table>
-         <h4>合計</h4>
-         <h3>￥<%= @total_price %></h3>
-         <div>
-         	<%= form_tag orders_path, method: :post do %>
-         		<%= hidden_field_tag :shipment_id, @ship.id %>
-        	<%= submit_tag "購入", class: "btn btn-lg btn-primary" %>
-        	<% end %>
-      	 </div>
-         <div><%= link_to "戻る", new_order_path, class: "pull-right btn btn-warning" %>
-         </div>
+            <table class="table table">
+                <thead>
+                  <tr>
+                    <th>商品情報</th>
+                    <th>値段</th>
+                    <th>数量</th>
+                    <th>小計</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% @carts.each do |cart| %>
+                  <tr>
+                    <td><%= attachment_image_tag cart.item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+                    <td>￥<%= cart.item.price %></td>
+                    <td><%= cart.amount %>枚</td>
+                    <td>￥<%= cart.item.price * cart.amount %></td>
+                  </tr>
+                </tbody>
+                <% end %>
+            </table>
+
+            <div class="row">
+              <div class="col-xs-6">
+              </div>
+
+              <div class="box-info col-xs-6">
+                <div class="box-title text-small">合計</div>
+                <div class="text-mid">￥<%= @total_price %></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">
+              </div>
+              <div class="col-xs-3">
+                  <div><%= form_tag orders_path, method: :post do %>
+                      <%= hidden_field_tag :shipment_id, @shipment.id %>
+                  <%= submit_tag "購入確定", class: "button" %>
+                  <% end %>
+                  </div>
+              </div>
+              <div class="col-xs-3">
+                  <div><%= link_to "戻る", new_order_path, class: "button-danger" %>
+                  </div>
+              </div>
+            </div>
+
 
         </div>
 
@@ -58,5 +72,6 @@
 
       </div>
     </div>
+
   </div>
 </div>
