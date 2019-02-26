@@ -29,7 +29,7 @@
 <br>
 
 <%= search_form_for @search,url: user_path do |f| %>
-<%= f.label :title_cont, "商品名を含む" %>
+<%= f.label :title_cont, "商品名から検索" %>
 <%= f.search_field :title_cont %>
 <div class="actions"><%= f.submit "検索" %></div>
 <% end %>
@@ -37,7 +37,7 @@
 
 
 
-<% @orders_items.each do |order| %>
+<% @products.each do |order| %>
 <div class = "topnewbox">
     <div>
     <%= link_to item_path(order.item.id) do %>
