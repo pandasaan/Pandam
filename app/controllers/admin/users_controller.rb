@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @orders = @user.orders
+    @orders = @user.orders.page(params[:page]).order(id: "DESC")
   end
 
   def edit
