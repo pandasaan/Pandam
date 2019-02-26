@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     @orders = Order.where(user_id: current_user)
     @orders_items = OrderItem.where(order_id: @orders)
-    @search = Item.ransack(params[:q])
+    @search = @orders_items.ransack(params[:q])
     @products = @search.result
   end
 

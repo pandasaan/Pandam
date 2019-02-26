@@ -33,6 +33,7 @@ class OrdersController < ApplicationController
 
           carts.each do |cart|
     order_items = OrderItem.new(item_id: cart.item.id, amount: cart.amount, order_price: cart.item.price, order_id: order.id)
+    order_items.title = cart.item.title
     order_items.save!
           end
 
