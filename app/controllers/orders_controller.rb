@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
     before_action :authenticate_user!
     before_action :collect_user, only: [:show, :result]
+    before_action :collect_amount, only: [:new, :create]
+    before_action :collect_shipment, only: [:new, :create]
+
 
   def new
      @shipments = Shipment.where(user_id: current_user.id)
@@ -86,5 +89,36 @@ class OrdersController < ApplicationController
       redirect_to user_path(current_user.id)
     end
   end
+
+  def collect_amount
+    @carts = Cart.where(user_id: current_user.id)
+          if @carts.blank?
+            flash[:alert] = "カートに商品がありません。"
+            redirect_to root_path
+          end
+       @carts.each do |cart|
+          item = Item.find(cart.item_id)
+          if
+            cart.amount == 0
+            flash[:alert] = "一部数量が0です。数量を入力してください。"
+            redirect_to carts_path
+          elsif
+            cart.amount > item.stock
+            flash[:alert] = "一部在庫が不足してしています。申し訳ございません"
+            redirect_to carts_path
+          else
+            cart.amount < item.stock
+          end
+       end
+  end
+
+  def collect_shipment
+    shipment = Shipment.where(user_id: current_user.id)
+    if shipment.blank?
+       flash[:alert] = "配送先が登録されていません。"
+       redirect_to user_shipments_path(current_user.id)
+    end
+  end
+
 
 end
