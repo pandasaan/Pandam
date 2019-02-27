@@ -1,4 +1,4 @@
-<div class ="top">
+<div class = "main-visual">
 <div class="container">
 <div class="row">
 
@@ -12,13 +12,13 @@
 本当に<br>
 退会しますか？
 
-	<span style="background:#FFFFFF; padding:0px; border-radius: 10px; border: 2px dotted #33CC33;">
+	<button type="button" class="btn btn-success">
 	    <%= link_to "退会せずにマイページに戻る", user_path(current_user.id) %>
-	</span>
-<span style="background:#FFFFFF; padding:0px; border-radius: 10px; border: 2px dotted #c7081d;">
+	</button>
+<button type="button" class="btn btn-danger">
 	<%= link_to  destroy_delete_path(current_user), method: :delete do%>
 		退会する
-		</span>
+		</button>
 		<%end%>
 </div>
 </div>

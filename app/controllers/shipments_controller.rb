@@ -1,4 +1,6 @@
 class ShipmentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :user, only: [:edit]
   def create
     @shipments = Shipment.new(shipment_params)
     @shipments.user_id = current_user.id
@@ -32,5 +34,12 @@ class ShipmentsController < ApplicationController
     private
     def shipment_params
       params.require(:shipment).permit(:shipment_name, :shipment_name_kana, :shipment_postal_code, :shipment_address)
+    end
+
+    def user
+      @shipments = Shipment.find(params[:id])
+      if current_user.id != @shipments.user_id
+        redirect_to user_path
+      end
     end
 end
