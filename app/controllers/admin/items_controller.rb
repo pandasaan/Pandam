@@ -30,7 +30,7 @@ class Admin::ItemsController < ApplicationController
 
   def update
       item = Item.find(params[:id])
-    if item.update(item_params)
+    if item.update_attributes(item_params)
       flash[:notice] = "編集が完了しました！"
       redirect_to admin_items_path
     else
@@ -60,7 +60,7 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :title, :price, :stock, :artist_id, :label_id, :genre_id, :item_is_deleted, discs_attributes: [:disc_name, :_destroy, tunes_attributes: [:tune_name, :index, :_destroy]])
+    params.require(:item).permit(:image, :title, :price, :stock, :artist_id, :label_id, :genre_id, :item_is_deleted, discs_attributes: [:id, :disc_name, :_destroy, tunes_attributes: [:id, :tune_name, :index, :_destroy]])
   end
   def flg_params
     params.require(:item).permit(:item_is_deleted)
