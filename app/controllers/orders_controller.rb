@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+    before_action :authenticate_user!
+    before_action :collect_user, only: [:show, :result]
+
   def new
      @shipments = Shipment.where(user_id: current_user.id)
   end
@@ -60,10 +63,6 @@ class OrdersController < ApplicationController
     @orderitems = OrderItem.where(order_id: params[:id])
   end
 
-  def index
-    @orders = Order.where(user_id: current_user.id).order(id: "DESC")
-  end
-
   def flg_update
     order = Order.find(params[:id])
     order.cancell_status = "user_cancell"
@@ -76,6 +75,16 @@ class OrdersController < ApplicationController
     orderitem.cancell_status = "user_cancell"
     orderitem.save
     redirect_to order_path(id: orderitem.order.id)
+  end
+
+  def collect_user
+    select_order = Order.find(params[:id])
+    if
+      select_order.user_id == current_user.id
+    else
+      flash[:alert] = "閲覧できません。"
+      redirect_to user_path(current_user.id)
+    end
   end
 
 end

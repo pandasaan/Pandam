@@ -10,8 +10,7 @@
   	    <div class="title text-big">購入確認</div>
 
             <div class="box-info">
-                  <div class="box-title text-mid">送付先No.<%= @shipment.id %>
-                  </div>
+                  <u><div class="text-mid">送付先</div></u>
                     <p class= "text-small">宛名：<%= @shipment.shipment_name %></p>
                     <p class= "text-small">宛名（カナ）：<%= @shipment.shipment_name_kana %></p>
                     <p class= "text-small">郵便番号：<%= @shipment.shipment_postal_code %></p>
@@ -44,21 +43,21 @@
               </div>
 
               <div class="box-info col-xs-6">
-                <div class="box-title text-small">合計</div>
+                <u><div class="text-small">合計</div></u>
                 <div class="text-mid">￥<%= @total_price %></div>
               </div>
             </div>
             <div class="row">
-              <div class="col-xs-3">
+              <div class="col-xs-4">
               </div>
-              <div class="col-xs-3">
+              <div class="col-xs-4">
                   <div><%= form_tag orders_path, method: :post do %>
                       <%= hidden_field_tag :shipment_id, @shipment.id %>
                   <%= submit_tag "購入確定", class: "button" %>
                   <% end %>
                   </div>
               </div>
-              <div class="col-xs-3">
+              <div class="col-xs-4">
                   <div><%= link_to "戻る", new_order_path, class: "button-danger" %>
                   </div>
               </div>

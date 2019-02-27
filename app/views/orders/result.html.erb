@@ -18,7 +18,7 @@
 
           <div class="row">
             <div class="box-info col-xs-4">
-                <div class= "box-title text-mid">送付先</div>
+                <u><div class= "text-mid">送付先</div></u>
                       <p class= "text-small">宛名：<%= order.order_name %></p>
                       <p class= "text-small">郵便番号：<%= order.order_postal_code %></p>
                       <p class= "text-small">送付先住所：<%= order.order_address %></p>
@@ -26,7 +26,7 @@
               <div class="col-xs-5">
               </div>
               <div class="box-info col-xs-3">
-                <div class="box-title text-small">合計</div>
+                <u><div class="text-small">合計</div></u>
                 <div class="text-mid">￥<%= order.total_price %></div>
               </div>
             </div>
@@ -53,15 +53,12 @@
                 <td>￥<%= price = orderitem.order_price %></td>
                 <td><%= amount = orderitem.amount %>枚</td>
                 <td><%= price * amount %></td>
-                <td><%= link_to item_path(id: orderitem.item.id) do %>商品詳細<% end %></td>
+                <td class="button"><%= link_to item_path(id: orderitem.item.id) do %>商品詳細<% end %></td>
               </tr>
         <% end %>
             </tbody>
           </table>
 
-
-        <div class="button"><%= link_to "Topへ戻る", root_path %>
-        </div>
       </div>
 
   </div>

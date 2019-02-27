@@ -5,21 +5,24 @@
       </div>
       <div class="col-xs-10">
         <div class="title text-big">送付先確認画面</div>
-          <div class="text-small">送付先をお選びください。</div>
-            <div class="row">
-              <div class="text-mid col-xs-5">送付先
+          <div class="row">
+            <div class="black-box text-small col-xs-5">送付先をお選びください。
+              <div class="white-text-mid">送付先（宛名）
                 <%= form_tag ("/orders/result"), method: "get", remote: true do %>
-                  <%= select_tag :shipment_id, options_from_collection_for_select(@shipments, :id, :shipment_name, ) %>
+                  <%= select_tag :shipment_id, options_from_collection_for_select(@shipments, :id, :shipment_name, ), class: "text-mid" %>
                   <div class="clearfix">
                       <%= submit_tag "購入確認ページへ", class: "button text-small", data: {"turbolinks" => false} %>
                   <% end %>
                   </div>
               </div>
+            </div>
+            <div class="col-xs-1">
+            </div>
               <div class="col-xs-6">
                 <div class="row">
                   <% @shipments.each do |shipment| %>
                     <div class="box-info">
-                        <div class="box-title text-small">送付先</div>
+                        <u><div class="text-small">送付先</div></u>
                         <p class= "text-mid">宛名：<%= shipment.shipment_name %></p>
                         <p class= "text-small">宛名（カナ）：<%= shipment.shipment_name_kana %></p>
                         <p class= "text-small">郵便番号：<%= shipment.shipment_postal_code %></p>

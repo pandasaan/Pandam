@@ -4,33 +4,35 @@
             <%= attachment_image_tag @item, :image, :fill, 350, 350, format: 'jpeg', fallback: "no_image.jpg" %>
         </div>
         <div class="col-lg-7">
-        	<u><div class= "text-mid">シングル・アルバム名</div></u>
-		      <div class= "text-mid"><%= @item.title %></div>
-
+          <div class="row">
+            <div class="col-lg-9">
+                	<u><div class= "text-mid">シングル・アルバム名</div></u>
+        		      <div class= "text-mid"><%= @item.title %></div>
+            </div>
+            <div class="col-lg-3">
+                  <u><div class="text-small">価格</div></u>
+                  <div class="text-small">¥<%= @item.price %></div>
+            </div>
             <div class="row">
-                  <div class="col-lg-4">
-                      <u><div class= "text-small">アーティスト</div></u>
-                      <div class="text-small"><%= @item.artist.artist_name %></div>
-                  </div>
                   <div class="col-lg-4">
                       <u><div class="text-small">ジャンル</div></u>
                       <div class="text-small"><%= @item.genre.genre %></div>
                   </div>
                   <div class="col-lg-4">
-                     <u><div class="text-small">レーベル</div><u>
+                     <u><div class="text-small">レーベル</div></u>
                     <div class="text-small"><%= @item.label.label; %></div>
                   </div>
+                  <div class="col-lg-4">
+                  </div>
             </div>
+          </div>
+
             <div class="row">
-              <div class="col-lg-8">
-              </div>
-              <div class="col-lg-4">
-                   <u><div class="text-small">価格</div><u>
-                   <div class="text-small">¥<%= @item.price %></div>
-              </div>
-            </div>
-            <div class="row">
-             <div class="col-lg-12">
+             <div class="col-lg-4">
+                      <u><div class= "text-small">アーティスト</div></u>
+                      <div class="text-small"><%= @item.artist.artist_name %></div>
+             </div>
+             <div class="col-lg-8">
                    <u><div class="text-small">コメント</div></u>
                    <div class="text-small"><%= @item.artist.comment %></div>
              </div>
@@ -52,6 +54,7 @@
                 	<% end %>
                 </div>
             </div>
+        </div>
 
   </div>
 </div>
