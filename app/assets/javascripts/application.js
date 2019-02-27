@@ -16,8 +16,8 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
-//= require cocoon
+
 
 $(function(){
-  setTimeout("$('#notice').fadeOut('slow')", 3000) 
+  setTimeout("$('#notice').fadeOut('slow')", 3000)
 })

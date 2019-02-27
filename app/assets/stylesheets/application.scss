@@ -88,7 +88,18 @@ footer {
     text-align: center;
 }
 
-
+.button-center {
+  width: 95%;
+  margin: 0 auto;
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #000000;
+  border-radius: 20px;
+  border: 2px solid #3498db;
+  color: #fff;
+  font-size: 11px;
+  text-align: center;
+}
 .button {
   display: inline-block;
   padding: 5px 8px;
@@ -99,6 +110,7 @@ footer {
   font-size: 11px;
   text-align: center;
 }
+
 .button-danger {
   display: inline-block;
   padding: 5px 8px;

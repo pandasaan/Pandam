@@ -11,9 +11,11 @@
               <% if order.dlv_status == "delivery_completed" %>
               <% else %>
                 <div class= "text-small">キャンセルステータス：<%= order.cancell_status %>
-                  <%= link_to "キャンセルする", flg_update_order_path(order.id),  method: :put, class: "text-small button-danger" %>
-              <% end %>
+                  <%= link_to flg_update_order_path(order.id), method: :put, class: "text-small button-danger" do %>
+                    <div>キャンセルする</div>
+                  <% end %>
                 </div>
+              <% end %>
         </div>
 
         <div class="box-info col-xs-4">
@@ -52,11 +54,17 @@
                   <td>￥<%= price = orderitem.order_price %></td>
                   <td><%= amount = orderitem.amount %>枚</td>
                   <td><%= price * amount %></td>
-                  <td><%= link_to item_path(id: orderitem.item.id), class: "button" do %>商品詳細<% end %></td>
+                  <td><%= link_to item_path(id: orderitem.item.id), class: "button" do %>
+                          <div>商品詳細</div>
+                      <% end %>
+                  </td>
+
                     <% if order.dlv_status == "delivery_completed" %>
                     <% else %>
                   <td>キャンセルステータス：<%= orderitem.cancell_status %>
-                  <%= link_to "この商品をキャンセルする", item_flg_update_order_path(orderitem.id) ,  method: :patch, class: "button-danger" %>
+                      <%= link_to item_flg_update_order_path(orderitem.id), method: :patch, class: "button-danger"  do %>
+                        <div>この商品をキャンセルする</div>
+                      <% end %>
                     <% end %>
                   </td>
                 </tr>
