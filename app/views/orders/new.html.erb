@@ -1,40 +1,39 @@
+<div class="main-visual">
 <div class="container">
   <div class="row">
-    <div class="col-xs-1">
-    </div>
-
-
-
-    <div class="box-info col-xs-10">
-      <h2 class="box-info text-big">送付先確認画面</h2>
-        <div class="text-mid">送付先を選んでください。</div>
+      <div class="col-xs-1">
+      </div>
+      <div class="col-xs-10">
+        <div class="title text-big">送付先確認画面</div>
           <div class="row">
-            <div class="col-xs-5">送付先
-              <%= form_tag ("/orders/result"), method: "get", remote: true do %>
-                <%= select_tag :shipment_id, options_from_collection_for_select(@ships, :id, :shipment_name, ) %>
-
-
-                <div class="clearfix">
-                    <%= submit_tag "購入確認画面へ", class: "button" %>
-                <% end %>
-                </div>
-            </div>
-
-            <div class="col-xs-6">
-              <div class="row">
-                <% @ships.each do |ship| %>
-                  <div class="panel panel-primary">
-                    <div class="panel-heading">
-                      <h4 class="panel-title">送付先</h4>
-                    </div>
-                      <p class= "ship-text">宛名：<%= ship.shipment_name %></p>
-                      <p class= "ship-text">宛名（カナ）<%= ship.shipment_name_kana %></p>
-                      <p class= "ship-text">郵便番号：<%= ship.shipment_postal_code %></p>
-                      <p class= "ship-text">送付先住所：<%= ship.shipment_address %></p>
+            <div class="black-box text-small col-xs-5">送付先をお選びください。
+              <div class="white-text-mid">送付先（宛名）
+                <%= form_tag ("/orders/result"), method: "get", remote: true do %>
+                  <%= select_tag :shipment_id, options_from_collection_for_select(@shipments, :id, :shipment_name, ), class: "text-mid" %>
+                  <div class="clearfix">
+                      <%= submit_tag "購入確認ページへ", class: "button text-small", data: {"turbolinks" => false} %>
+                  <% end %>
                   </div>
-                <% end %>
               </div>
             </div>
-          </div>
-    </div>
-<div id="order-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+            <div class="col-xs-1">
+            </div>
+              <div class="col-xs-6">
+                <div class="row">
+                  <% @shipments.each do |shipment| %>
+                    <div class="box-info">
+                        <u><div class="text-small">送付先</div></u>
+                        <p class= "text-mid">宛名：<%= shipment.shipment_name %></p>
+                        <p class= "text-small">宛名（カナ）：<%= shipment.shipment_name_kana %></p>
+                        <p class= "text-small">郵便番号：<%= shipment.shipment_postal_code %></p>
+                        <p class= "text-small">送付先住所：<%= shipment.shipment_address %></p>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+      </div>
+  </div>
+</div>
+</div>
+  <div id="order-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

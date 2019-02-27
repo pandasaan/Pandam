@@ -1,10 +1,13 @@
 class OrdersController < ApplicationController
+    before_action :authenticate_user!
+    before_action :collect_user, only: [:show, :result]
+
   def new
-     @ships = Shipment.where(user_id: current_user.id)
+     @shipments = Shipment.where(user_id: current_user.id)
   end
 
   def modal
-    @ship = Shipment.find(params[:shipment_id])
+    @shipment = Shipment.find(params[:shipment_id])
 
     @carts = Cart.where(user_id: current_user.id)
         total = 0
@@ -16,7 +19,7 @@ class OrdersController < ApplicationController
 
   def create
 
-    ship = Shipment.find(params[:shipment_id])
+    shipment = Shipment.find(params[:shipment_id])
           carts = Cart.where(user_id: current_user.id)
               total = 0
               carts.each do |a|
@@ -24,23 +27,23 @@ class OrdersController < ApplicationController
               end
       total_price = total
 
-      name = ship.shipment_name
-      postal_code = ship.shipment_postal_code
-      address = ship.shipment_address
+      name = shipment.shipment_name
+      postal_code = shipment.shipment_postal_code
+      address = shipment.shipment_address
 
     order = Order.new(user_id: current_user.id, order_name: name, order_postal_code: postal_code, order_address: address, total_price: total_price)
     order.save!
 
           carts.each do |cart|
     order_items = OrderItem.new(item_id: cart.item.id, amount: cart.amount, order_price: cart.item.price, order_id: order.id)
-    order_items.title = cart.item.title
+      order_items.title = cart.item.title
     order_items.save!
           end
 
     order_items = OrderItem.where(order_id: order.id)
           order_items.each do |orderitem|
-    after_stock = orderitem.item.stock
-    after_stock -= orderitem.amount
+      after_stock = orderitem.item.stock
+      after_stock -= orderitem.amount
     orderitem.item.update(stock: after_stock)
           end
 
@@ -60,10 +63,6 @@ class OrdersController < ApplicationController
     @orderitems = OrderItem.where(order_id: params[:id])
   end
 
-  def index
-    @orders = Order.where(user_id: current_user.id).order(id: "DESC")
-  end
-
   def flg_update
     order = Order.find(params[:id])
     order.cancell_status = "user_cancell"
@@ -76,6 +75,16 @@ class OrdersController < ApplicationController
     orderitem.cancell_status = "user_cancell"
     orderitem.save
     redirect_to order_path(id: orderitem.order.id)
+  end
+
+  def collect_user
+    select_order = Order.find(params[:id])
+    if
+      select_order.user_id == current_user.id
+    else
+      flash[:alert] = "閲覧できません。"
+      redirect_to user_path(current_user.id)
+    end
   end
 
 end
