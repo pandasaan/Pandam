@@ -1,9 +1,9 @@
-<div class = "top" >
+<div class ="main-visual">
 <div class="container">
 	<div class="row">
 
 <div class="col-md-6">
-	<h1>配送先登録</h1>
+	<h1 class = "text-big">配送先登録</h1>
 
 	<%= form_for @shipments,url: user_shipments_path(current_user.id) do |f| %>
 
@@ -23,12 +23,12 @@
 </font>
 	<% end %>
 
-	<%= link_to "マイページへ戻る", user_path(current_user.id)  %>
+	<div class = "button"><%= link_to "マイページへ戻る", user_path(current_user.id)  %></div>
 
 </div>
 
 <div class="col-md-6">
-	<h1>送付先一覧</h1>
+	<h1 class = "text-big">送付先一覧</h1>
 	<% @shipment.each do |shipment| %>
 	    <%= link_to  edit_user_shipment_path(current_user.id,shipment.id) do %>
 	    <font color="black">

@@ -1,4 +1,4 @@
-<div class ="top">
+<div class ="main-visual">
 <div class="container">
 <div class="row">
 
@@ -6,7 +6,7 @@
   </div>
 
   <div class="col-xs-11">
-<h1>送付先編集</h1>
+<h1 class = "text-big">送付先編集</h1>
 <%= form_for @shipments, url: user_shipment_path(current_user.id) do |f| %>
 
     <h4>名前（姓、名）</h4>
@@ -25,7 +25,9 @@
     <%= f.submit '編集' %>
     </font>
 <% end %>
-<%= link_to "削除",  user_shipment_path(user_id: current_user.id, id: @shipments.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<div class = "button"><%= link_to "削除",  user_shipment_path(user_id: current_user.id, id: @shipments.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+</div>
 |
-<%= link_to "一覧へ戻る", user_shipments_path(current_user.id)  %>
+<div class = "button"><%= link_to "一覧へ戻る", user_shipments_path(current_user.id)  %>
+</div>
 </div>
