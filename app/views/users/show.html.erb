@@ -27,14 +27,19 @@
 </font>
 
 <br>
-
+<div>
 <%= search_form_for @search,url: user_path do |f| %>
 <%= f.label :title_cont, "商品名から検索" %>
 <%= f.search_field :title_cont %>
-<div class="actions"><%= f.submit "検索" %></div>
+<div class="actions"><%= f.submit "検索", class: "btn btn-lg btn-primary" %></div>
 <% end %>
 
 
+    <%= link_to user_path(current_user.id) do %>
+    <span class="glyphicon glyphicon-refresh">
+    </span>
+    <% end %>
+</div>
 
 
 <% @products.each do |order| %>
