@@ -33,10 +33,10 @@
 	    <%= link_to  edit_user_shipment_path(current_user.id,shipment.id) do %>
 	    <font color="black">
 	    <div class="well">
-	    <h6><%= shipment.shipment_name_kana %></h6>
-	    <h1><%= shipment.shipment_name %></h1>
-	    <h3><%= shipment.shipment_postal_code %></h3>
-	    <h2><%= shipment.shipment_address %></h2>
+	    <h3>名前（姓、名）:<%= shipment.shipment_name_kana %></h3>
+	    <h3>名前（カナ）:<%= shipment.shipment_name %></h3>
+	    <h4>郵便番号:<%= shipment.shipment_postal_code %></h4>
+	    <h4>住所:<%= shipment.shipment_address %></h4>
 	    </div>
 	</font>
 	    <% end %>
