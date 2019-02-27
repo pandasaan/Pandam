@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'https://use.fontawesome.com/releases/v5.7.2/css/all.css'  %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
@@ -105,9 +106,7 @@
     <main>
       <% if flash[:notice] %>
         <p id=notice><%= flash[:notice] %></p>
-      <% end %>
-
-      <% if flash[:alert] %>
+      <% elsif flash[:alert] %>
         <p id=alert><%= flash[:alert] %></p>
       <% end %>
 

@@ -1,14 +1,44 @@
-<div class="container">
-  <h2>管理者ページ</h2>
-
-  <div class="list-group">
-    <%= link_to "ユーザー一覧", admin_users_path, class: "list-group-item" %>
-    <%= link_to "購入履歴一覧", admin_orders_path, class: "list-group-item" %>
-    <%= link_to "商品一覧", admin_items_path,class: "list-group-item" %>
-    <%= link_to "アーティスト一覧",admin_artists_path, class: "list-group-item" %>
-    <%= link_to "レーベル一覧", admin_labels_path, class: "list-group-item" %>
-    <%= link_to "ジャンル一覧", admin_genres_path, class: "list-group-item" %>
+<div class="services-section">
+  <div class="inner-width">
+    <h2 class="section-title">管理者機能</h2>
+    <div class="border"></div>
+    <div class="services-container">
+      <%= link_to admin_users_path, class: "service-box" do %>
+        <div class="service-icon">
+          <i class="fas fa-address-card"></i>
+        </div>
+        <div class="sevice-title">Users</div>
+      <% end %>
+      <%= link_to admin_orders_path, class: "service-box" do %>
+        <div class="service-icon">
+          <i class="fas fa-shopping-cart"></i>
+        </div>
+        <div class="sevice-title">Orders</div>
+      <% end %>
+      <%= link_to admin_items_path, class: "service-box" do %>
+        <div class="service-icon">
+          <i class="fas fa-compact-disc"></i>
+        </div>
+        <div class="sevice-title">Items</div>
+      <% end %>
+      <%= link_to admin_artists_path, class: "service-box" do %>
+        <div class="service-icon">
+          <i class="fab fa-drupal"></i>
+        </div>
+        <div class="sevice-title">Artists</div>
+      <% end %>
+      <%= link_to admin_labels_path, class: "service-box" do %>
+        <div class="service-icon">
+          <i class="fab fa-affiliatetheme"></i>
+        </div>
+        <div class="sevice-title">Labels</div>
+      <% end %>
+      <%= link_to admin_genres_path, class: "service-box" do %>
+        <div class="service-icon">
+          <i class="fas fa-music"></i>
+        </div>
+        <div class="sevice-title">Genres</div>
+      <% end %>
+    </div>
   </div>
-
-  <%= link_to "Log out", destroy_admin_session_path, method: :delete, class: "btn btn-danger" %>
 </div>
