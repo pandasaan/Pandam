@@ -19,5 +19,11 @@
 
 
 $(function(){
+
   setTimeout("$('#notice').fadeOut('slow')", 3000)
 })
+
+$(function(){
+  setTimeout("$('#alert').fadeOut('slow')", 3000)
+})
+
