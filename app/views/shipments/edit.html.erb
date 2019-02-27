@@ -25,7 +25,9 @@
     <%= f.submit '編集' %>
     </font>
 <% end %>
-<%= link_to "削除",  user_shipment_path(user_id: current_user.id, id: @shipments.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<div class = "button"><%= link_to "削除",  user_shipment_path(user_id: current_user.id, id: @shipments.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+</div>
 |
-<%= link_to "一覧へ戻る", user_shipments_path(current_user.id)  %>
+<div class = "button"><%= link_to "一覧へ戻る", user_shipments_path(current_user.id)  %>
+</div>
 </div>
