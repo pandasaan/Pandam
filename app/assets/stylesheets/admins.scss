@@ -2,7 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.box h2 {
+.test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+#alert {
+  width: 100%;
+  background-color: #dc143c;
+  color: white;
+  text-align: center;
+}
+
+.box .devise-title {
   color: white;
   text-transform: uppercase;
   font-weight: 500;
@@ -10,10 +23,10 @@
 }
 
 .box {
+  height: 354px;
   width: 300px;
   background: #191919;
   text-align: center;
-  margin-bottom: 20px;
   border-radius: 20px;
 }
 
